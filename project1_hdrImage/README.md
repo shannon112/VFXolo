@@ -17,7 +17,7 @@ Exposure time: from 1/3000 to 1/2
 4scene, 4*22images  
 
 2. resize images to ```/test_img```  
-6000*4000pixels->150*100pixels   
+6000x4000pixels -> 150x100pixels   
 ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
 
 3.
