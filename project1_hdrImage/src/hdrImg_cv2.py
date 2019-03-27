@@ -1,34 +1,48 @@
 #!/home/shannon/miniconda2/envs/cvbot/bin/python
 #-*- coding: utf-8 -*-　　　←表示使用 utf-8 編碼
 import cv2
+import sys
 import numpy as np
 from matplotlib import pyplot as plt
 
-def readImagesAndTimes():
-    # List of exposure times
-    times = np.array(np.loadtxt("../raw_img/img_shutter_float.txt"), dtype=np.float32)
-    # List of image filenames
-    images = []
-    for fileNum in range(22):
-        #filename = 23+fileNum #for image1
-        filename = 57+fileNum #for image4
-        #path = "../test_img/image4_/DSC099{}.jpg".format(str(filename))
-        #path = "../raw_img/image4/DSC099{}.JPG".format(str(filename))
-        path = "../test_img/image1_/DSC098{}.jpg".format(str(filename))
-        #path = "../raw_img/image1/DSC098{}.JPG".format(str(filename))
-        img = cv2.imread(path)
-        images.append(img)
-    imgSet = np.array(images)
+
+def readImagesAndTimes(image_num,image_quality):
     # List of chosen image
+    chosenImgs=[]
+    filename=0
+    path=""
+    format=""
+    if image_num == 1:
+        chosenImgs = [1,5,8,13,16]
+        filename = 57
+        if image_quality == 0:
+            path="../test_img/image1_/DSC098"
+            format=".jpg"
+        elif image_quality == 1:
+            path="../raw_img/image1/DSC098"
+            format=".JPG"
+    elif image_num == 4:
+        chosenImgs = [7,11,13,16,18]
+        filename = 23
+        if image_quality == 0:
+            path="../test_img/image4_/DSC099"
+            format=".jpg"
+        elif image_quality == 1:
+            path="../raw_img/image4/DSC099"
+            format=".JPG"
+    # List of exposure times
     ctimes = []
-    cimages = []
-    #chosenImgs = [7,11,13,16,18] #for image1
-    chosenImgs = [1,5,8,13,16] #for image4
-    for chosenImg in chosenImgs:
-        cimages.append(imgSet[chosenImg,:,:,:])
-        ctimes.append(times[chosenImg])
-    cimgSet = np.array(cimages)
+    times = np.array(np.loadtxt("../raw_img/img_shutter_float.txt"), dtype=np.float32)
+    for i in chosenImgs: ctimes.append(times[i])
     ctimeSet = np.array(ctimes)
+    # List of images
+    cimages = []
+    for chosenImg in chosenImgs:
+        fullfilename = filename+chosenImg
+        fullpath = "{}{}{}".format(path,str(fullfilename),format)
+        img = cv2.imread(fullpath)
+        cimages.append(img)
+    cimgSet = np.array(cimages)
     # Plot original images
     '''fig=plt.figure()
     fig.suptitle('original')
@@ -55,7 +69,6 @@ def alignmentImages(imgSet,times):
     return imgSet_aligned
 
 
-
 def obtainCRF(imgSet_aligned,times):
     calibrateDebevec = cv2.createCalibrateDebevec()
     responseDebevec = calibrateDebevec.process(imgSet_aligned,times)
@@ -67,10 +80,12 @@ def obtainCRF(imgSet_aligned,times):
     plt.plot(range(256),responseDebevec[:,0,2],c='r')'''
     return responseDebevec
 
+
 def mergeImgAsHdr(CRF,imgSet_aligned,times):
     mergeDebevec = cv2.createMergeDebevec()
     hdrDevec = mergeDebevec.process(imgSet_aligned,times,CRF)
     return hdrDevec
+
 
 def toneMappingDrago(hdrImg):
     tonemapDrago = cv2.createTonemapDrago(0.75,0.7)
@@ -83,6 +98,7 @@ def toneMappingDrago(hdrImg):
     subfig.imshow(ldrDrago_rgb)
     return ldrDrago
 
+
 def toneMappingDurand(hdrImg):
     tonemapDurand = cv2.createTonemapDurand(0.45,3,1.1,1,1)
     ldrDurand = tonemapDurand.process(hdrImg)
@@ -94,6 +110,7 @@ def toneMappingDurand(hdrImg):
     subfig.imshow(ldrDurand_rgb)
     return ldrDurand
 
+
 def toneMappingReinhard(hdrImg):
     tonemapReinhard = cv2.createTonemapReinhard(0.9,4,1,0)
     ldrReinhard = tonemapReinhard.process(hdrImg)
@@ -103,6 +120,7 @@ def toneMappingReinhard(hdrImg):
     subfig.set_title("Reinhard")
     subfig.imshow(ldrReinhard_rgb)
     return ldrReinhard
+
 
 def toneMappingMantiuk(hdrImg):
     tonemapMantiuk = cv2.createTonemapMantiuk(2.8,0.9,1.5)
@@ -114,26 +132,30 @@ def toneMappingMantiuk(hdrImg):
     subfig.imshow(ldrMantiuk_rgb)
     return ldrMantiuk
 
+
 def main():
-    imgSet,times = readImagesAndTimes()
-    print "imgSet ",imgSet.shape
-    print "times ",times.shape
+    image_num = int(sys.argv[1])
+    image_quality = int(sys.argv[2])
+    imgSet,times = readImagesAndTimes(image_num,image_quality)
+    print "imgSet ",imgSet.shape; print "times ",times.shape
     imgSet_aligned = alignmentImages(imgSet,times)
     print "imgSet_aligned ",imgSet_aligned.shape
     CRF = obtainCRF(imgSet_aligned,times)
     print "CRF ",CRF.shape
     hdrImg = mergeImgAsHdr(CRF,imgSet_aligned,times)
     print "hdrImg ",hdrImg.shape
+
     # Plot hdr images
     fig4=plt.figure()
     fig4.suptitle('HDR images')
     #ldrImgDrago = toneMappingDrago(hdrImg)
     #ldrImgDurand = toneMappingDurand(hdrImg)
-    ldrImgReinhard = toneMappingReinhard(hdrImg)
     #ldrImgMantiuk = toneMappingMantiuk(hdrImg)
+    ldrImgReinhard = toneMappingReinhard(hdrImg)
     # Save photo
     cv2.imwrite("img.jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
     plt.show()
+
 
 if __name__ == '__main__':
     main()
