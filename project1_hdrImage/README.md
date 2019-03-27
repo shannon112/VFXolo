@@ -15,9 +15,9 @@ Exposure time: from 1/3000 to 1/2
 ```
 ### 1. collect images
 Stored at ```/raw_img```  
-4scene, 4*22images  
+4scene, 4*22images, each with 6000x4000 pixels  
 
-### 2. resize images
+### 2. resize images for testing
 Stored at ```/test_img```  
-6000x4000pixels -> 150x100pixels   
+2 test set, 2*22images, with 900x600 pixels  
 Using online tranformation website: ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
