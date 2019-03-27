@@ -10,9 +10,9 @@ def readImagesAndTimes():
     # List of image filenames
     images = []
     for fileNum in range(22):
-        #filename = 23+fileNum
-        filename = 57+fileNum
-        #path = "../test_img/image4/DSC099{}.jpg".format(str(filename))
+        #filename = 23+fileNum #for image1
+        filename = 57+fileNum #for image4
+        #path = "../test_img/image4_/DSC099{}.jpg".format(str(filename))
         #path = "../raw_img/image4/DSC099{}.JPG".format(str(filename))
         path = "../test_img/image1_/DSC098{}.jpg".format(str(filename))
         #path = "../raw_img/image1/DSC098{}.JPG".format(str(filename))
@@ -22,20 +22,21 @@ def readImagesAndTimes():
     # List of chosen image
     ctimes = []
     cimages = []
-    chosenImgs = [1,5,8,13,16]
+    #chosenImgs = [7,11,13,16,18] #for image1
+    chosenImgs = [1,5,8,13,16] #for image4
     for chosenImg in chosenImgs:
         cimages.append(imgSet[chosenImg,:,:,:])
         ctimes.append(times[chosenImg])
     cimgSet = np.array(cimages)
     ctimeSet = np.array(ctimes)
     # Plot original images
-    fig=plt.figure()
+    '''fig=plt.figure()
     fig.suptitle('original')
     for i,chosenImg in enumerate(chosenImgs):
         image=cimgSet[i,:,:,:]
         image_rgb=image[:,:,::-1]
         subfig = plt.subplot(1,len(chosenImgs),i+1)
-        subfig.imshow(image_rgb)
+        subfig.imshow(image_rgb)'''
     return cimgSet,ctimeSet
 
 
@@ -44,13 +45,13 @@ def alignmentImages(imgSet,times):
     alinMTB.process(imgSet,imgSet)
     imgSet_aligned=imgSet
     # Plot aligned images
-    fig2=plt.figure()
+    '''fig2=plt.figure()
     fig2.suptitle('aligned')
     for i,time in enumerate(times):
         image=imgSet_aligned[i,:,:,:]
         image_rgb=image[:,:,::-1]
         subfig = plt.subplot(1,len(times),i+1)
-        subfig.imshow(image_rgb)
+        subfig.imshow(image_rgb)'''
     return imgSet_aligned
 
 
@@ -59,11 +60,11 @@ def obtainCRF(imgSet_aligned,times):
     calibrateDebevec = cv2.createCalibrateDebevec()
     responseDebevec = calibrateDebevec.process(imgSet_aligned,times)
     # Plot CRF
-    fig3=plt.figure()
+    '''fig3=plt.figure()
     fig3.suptitle('CRF')
     plt.plot(range(256),responseDebevec[:,0,0],c='b')
     plt.plot(range(256),responseDebevec[:,0,1],c='g')
-    plt.plot(range(256),responseDebevec[:,0,2],c='r')
+    plt.plot(range(256),responseDebevec[:,0,2],c='r')'''
     return responseDebevec
 
 def mergeImgAsHdr(CRF,imgSet_aligned,times):
@@ -116,20 +117,22 @@ def toneMappingMantiuk(hdrImg):
 def main():
     imgSet,times = readImagesAndTimes()
     print "imgSet ",imgSet.shape
-    print "times ",times.shape, "\n"
+    print "times ",times.shape
     imgSet_aligned = alignmentImages(imgSet,times)
-    print "imgSet_aligned ",imgSet_aligned.shape, "\n"
+    print "imgSet_aligned ",imgSet_aligned.shape
     CRF = obtainCRF(imgSet_aligned,times)
-    print "CRF ",CRF.shape,"\n"
+    print "CRF ",CRF.shape
     hdrImg = mergeImgAsHdr(CRF,imgSet_aligned,times)
-    print "hdrImg ",hdrImg.shape,hdrImg,"\n"
+    print "hdrImg ",hdrImg.shape
     # Plot hdr images
     fig4=plt.figure()
     fig4.suptitle('HDR images')
-    ldrImgDrago = toneMappingDrago(hdrImg)
-    ldrImgDurand = toneMappingDurand(hdrImg)
+    #ldrImgDrago = toneMappingDrago(hdrImg)
+    #ldrImgDurand = toneMappingDurand(hdrImg)
     ldrImgReinhard = toneMappingReinhard(hdrImg)
-    ldrImgMantiuk = toneMappingMantiuk(hdrImg)
+    #ldrImgMantiuk = toneMappingMantiuk(hdrImg)
+    # Save photo
+    cv2.imwrite("img.jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
     plt.show()
 
 if __name__ == '__main__':
