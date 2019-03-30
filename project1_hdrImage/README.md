@@ -21,3 +21,9 @@ Stored at ```/raw_img```
 Stored at ```/test_img```  
 2 test set, 2*22images, with 900x600 pixels  
 Using online tranformation website: ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
+
+------
+### Ref:
+1. Greg Ward, Fast Robust Image Registration for Compositing High Dynamic Range Photographs from Hand-Held Exposures, jgt 2003.  
+2. Paul E. Debevec, Jitendra Malik, Recovering High Dynamic Range Radiance Maps from Photographs, SIGGRAPH 1997.  
+3. Raanan Fattal, Dani Lischinski, Michael Werman, Gradient Domain High Dynamic Range Compression, SIGGRAPH 2002.  
