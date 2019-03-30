@@ -36,7 +36,18 @@ Stored at ```/test_img```
 2 test set, 2*22images, with 900x600 pixels  
 Using online tranformation website: ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
 
-#### 3. Alignment (MTB + Image Pyramid)
+#### 3. Alignment (MTB + Image Pyramid + Offset Search)
+function name: ```Alignment```  
+input: unaligned images  
+output: aligned images  
+```
+Generate gassian images pyramid
+Compute an median threshold bitmap for each exposure at each resolution level in our pyramid
+Compute an exclusion bitmap for each exposure at each resolution level in our pyramid
+Offset 1bit to generate 9 candidate
+Take the XOR difference result for these candidate offset
+AND’ing it with both offset exclusion bitmaps to compute our final difference
+```
 
 #### 4. Finding camera response function (CRF)
 
