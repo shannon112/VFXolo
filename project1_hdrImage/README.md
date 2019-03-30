@@ -45,9 +45,12 @@ output: aligned images
 Generate gassian images pyramid
 Compute an median threshold bitmap for each exposure at each resolution level in our pyramid
 Compute an exclusion bitmap for each exposure at each resolution level in our pyramid
-Offset 1bit to generate 9 candidate
-Take the XOR difference result for these candidate offset
+Offset 1bit to generate 9 candidate 
+Take the XOR difference for these candidates 
 AND’ing it with both offset exclusion bitmaps to compute our final difference
+Pick the min difference as the offset
+At the next resolution level, we multiply this offset by 2 and repeat compute the minimum difference offset within a ±1 pixel
+Continues to the highest (original) resolution MTB, where we get our final offset result
 ```
 
 #### 4. Finding camera response function (CRF)
