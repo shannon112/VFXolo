@@ -37,6 +37,7 @@ Stored at ```/test_img```
 Using online tranformation website: ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
 
 #### 3. Alignment (MTB + Image Pyramid + Offset Search)
+The method is based on a pyramid of median threshold bitmaps, which are aligned using bitwise shift and differencing operations.  
 function name: ```Alignment```  
 input: unaligned images  
 output: aligned images  
