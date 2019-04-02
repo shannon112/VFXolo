@@ -28,8 +28,12 @@ Exposure program: Manual
 Exposure time: from 1/3000 to 1/2
 ```
 #### 1. Collected images
-Stored at ```/raw_img```  
-4scene, 4*22images, each with 6000x4000 pixels  
+Scene1: Robotics_Corner
+```
+Raw images 6000*4000: stored at /raw_img/Robotics_Corner    # raw from camera
+Use images 1800*1200: stored at /use_img/Robotics_Corner   # used for final production
+Test images 900*600: stored at /test_img/Robotics_Corner   # used for quickly test
+```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09857.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09858.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09859.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09860.jpg" width="210">
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09861.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09862.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09863.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09864.jpg" width="210">
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09865.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09866.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09867.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09868.jpg" width="210">
@@ -39,6 +43,18 @@ Stored at ```/raw_img```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09876.jpg" width="210">
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09877.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09878.jpg" width="210">
 
+Scene2: Robotics_Corner
+```
+Raw images 6000*4000: stored at /raw_img/Robot_Power    # raw from camera
+Use images 1800*1200: stored at /use_img/Robot_Power   # used for final production
+Test images 900*600: stored at /test_img/Robot_Power  # used for quickly test
+```
+
+exposures = [1/3000, 1/2000, 1/1500, 1/1000, 1/750, 1/500, 1/350, 1/250, 1/200, 1/125, 1/90, 1/60, 1/45, 1/30, 1/20, 1/15, 1/10, 1/8, 1/6, 1/4, 1/3, 0.5'']
+```
+Display numbers: /raw_img/img_shutter_display.txt      # raw
+Float numbers: /raw_img/img_shutter_float.txt         # Usable
+```
 
 #### 2. Resized images for testing
 Stored at ```/test_img```  
