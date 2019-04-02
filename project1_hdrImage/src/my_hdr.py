@@ -11,8 +11,8 @@ def readImagesAndTimes(image_num,image_quality):
     # Pick the images and parameters we want
     chosenImgs, fileNumber, path, format = [], 0, "", ""
     if image_num == "robotics_corner":
-        #chosenImgs = [1,5,8,13,16] # bad chosen, judging from mtb and eb
-        chosenImgs, fileNumber = [8,10,12,14,16], 57
+        #chosenImgs = [1,5,8,13,16] # bad chosen, judging from mtb and eb #[8,10,12,14,16]
+        chosenImgs, fileNumber = [3,5,9,13,20], 57
         if image_quality == 0:
             path, format, pyramid_level = "../test_img/Robotics_Corner/DSC098", ".jpg", 5
         elif image_quality == 1:
@@ -124,6 +124,14 @@ def alignmentImages(imgSet,times,pyramid_level):
         plt.subplot(len(imgSet_green), pyramid_level+1+2+1, 1+pyramid_level+3+i*(pyramid_level+1+2+1)).imshow(img_rgb)
     print "imgSet_aligned ",img_translation.shape
     return img_translation
+
+
+# built-in method
+def alignmentImages_cv2(imgSet,times):
+    alinMTB = cv2.createAlignMTB()
+    alinMTB.process(imgSet,imgSet)
+    imgSet_aligned=imgSet
+    return imgSet_aligned
 
 
 # implementation of Paul E. Debevec, Jitendra Malik, Recovering High Dynamic Range Radiance Maps from Photographs, SIGGRAPH 1997.
@@ -271,11 +279,12 @@ def toneMappingMantiuk(hdrImg):
 
 def main():
     # read images and infos
-    image_num, image_quality = sys.argv[1], int(sys.argv[2])
+    image_num, image_quality, align = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
     imgSet,times,pyramid_level = readImagesAndTimes(image_num,image_quality)
 
     # image alignment
-    imgSet_aligned = alignmentImages(imgSet,times,pyramid_level)
+    if (align==1): imgSet_aligned = alignmentImages(imgSet,times,pyramid_level)
+    elif (align==0): imgSet_aligned = alignmentImages_cv2(imgSet,times)
 
     # Recover response curve
     CRF_r,lE_r = obtainCRF(imgSet_aligned[:,:,:,2],times)
@@ -287,7 +296,7 @@ def main():
     # Generate my hdr img
     radianceMap = generateRadianceMap(imgSet_aligned,CRF,times)
     plotRadianceMap(radianceMap)
-    cv2.imwrite(image_num+".hdr",radianceMap)
+    cv2.imwrite(image_num+"_test.hdr",radianceMap)
 
     # Run 4 bulit-in tone-mapping
     fig8=plt.figure().suptitle('original images')
@@ -295,8 +304,9 @@ def main():
     ldrImgDurand = toneMappingDurand(radianceMap)
     ldrImgMantiuk = toneMappingMantiuk(radianceMap)
     ldrImgReinhard = toneMappingReinhard(radianceMap)
+
     # Save the best of them (ldrImgReinhard)
-    cv2.imwrite(image_num+".jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
+    cv2.imwrite(image_num+"_test.jpg",ldrImgDrago*255, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     plt.show()
 
