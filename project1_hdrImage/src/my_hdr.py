@@ -223,15 +223,50 @@ def plotRadianceMap(radianceMap):
     plt.colorbar()
 
 
-# bulit-in function
+# bulit-in tone-mapping function
+def toneMappingDrago(hdrImg):
+    tonemapDrago = cv2.createTonemapDrago(1.55,1.25,1.0)#robotics_corner
+    ldrDrago = tonemapDrago.process(hdrImg)
+    ldrDrago = 3* ldrDrago
+    # Plot hdr images
+    ldrDrago_rgb=ldrDrago[:,:,::-1]
+    subfig = plt.subplot(2,2,1)
+    subfig.set_title("Drago")
+    subfig.imshow(ldrDrago_rgb)
+    return ldrDrago
+# bulit-in tone-mapping function
+def toneMappingDurand(hdrImg):
+    tonemapDurand = cv2.createTonemapDurand(0.45,3,1.1,1,1)
+    ldrDurand = tonemapDurand.process(hdrImg)
+    ldrDurand = 3* ldrDurand
+    # Plot hdr images
+    ldrDurand_rgb=ldrDurand[:,:,::-1]
+    subfig = plt.subplot(2,2,2)
+    subfig.set_title("Durand")
+    subfig.imshow(ldrDurand_rgb)
+    return ldrDurand
+# bulit-in tone-mapping function
 def toneMappingReinhard(hdrImg):
     tonemapReinhard = cv2.createTonemapReinhard(0.9,4,1,0) # gama, intensity, light_adapt, color_adapt
     ldrReinhard = tonemapReinhard.process(hdrImg)
     # Plot hdr images
     ldrReinhard_rgb=ldrReinhard[:,:,::-1]
-    fig5=plt.figure().suptitle('tone-mapped HDR image')
-    plt.imshow(ldrReinhard_rgb)
+    #fig5=plt.figure().suptitle('tone-mapped HDR image')
+    #plt.imshow(ldrReinhard_rgb)
+    subfig = plt.subplot(2,2,3)
+    subfig.set_title("Reinhard")
+    subfig.imshow(ldrReinhard_rgb)
     return ldrReinhard
+# bulit-in tone-mapping function
+def toneMappingMantiuk(hdrImg):
+    tonemapMantiuk = cv2.createTonemapMantiuk(2.8,0.9,1.5)
+    ldrMantiuk = tonemapMantiuk.process(hdrImg)
+    # Plot hdr images
+    ldrMantiuk_rgb=ldrMantiuk[:,:,::-1]
+    subfig = plt.subplot(2,2,4)
+    subfig.set_title("Mantiuk")
+    subfig.imshow(ldrMantiuk_rgb)
+    return ldrMantiuk
 
 
 def main():
@@ -252,11 +287,16 @@ def main():
     # Generate my hdr img
     radianceMap = generateRadianceMap(imgSet_aligned,CRF,times)
     plotRadianceMap(radianceMap)
-    cv2.imwrite("img.hdr",radianceMap)
+    cv2.imwrite(image_num+".hdr",radianceMap)
 
-    # Bulit-in tone-mapping
+    # Run 4 bulit-in tone-mapping
+    fig8=plt.figure().suptitle('original images')
+    ldrImgDrago = toneMappingDrago(radianceMap)
+    ldrImgDurand = toneMappingDurand(radianceMap)
+    ldrImgMantiuk = toneMappingMantiuk(radianceMap)
     ldrImgReinhard = toneMappingReinhard(radianceMap)
-    cv2.imwrite("img.jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
+    # Save the best of them (ldrImgReinhard)
+    cv2.imwrite(image_num+".jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     plt.show()
 
