@@ -252,6 +252,7 @@ def main():
     # Generate my hdr img
     radianceMap = generateRadianceMap(imgSet_aligned,CRF,times)
     plotRadianceMap(radianceMap)
+    cv2.imwrite("img.hdr",radianceMap)
 
     # Bulit-in tone-mapping
     ldrImgReinhard = toneMappingReinhard(radianceMap)
