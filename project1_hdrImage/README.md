@@ -30,6 +30,18 @@ Exposure time: from 1/3000 to 1/2
 #### 1. Collected images
 Stored at ```/raw_img```  
 4scene, 4*22images, each with 6000x4000 pixels  
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09857.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09858.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09859.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09860.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09861.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09862.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09863.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09864.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09865.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09866.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09867.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09868.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09869.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09870.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09871.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09872.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09873.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09874.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09875.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09876.jpg" width="210">
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09877.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robotics_Corner/DSC09878.jpg" width="210">
+
 
 #### 2. Resized images for testing
 Stored at ```/test_img```  
