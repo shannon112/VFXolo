@@ -21,8 +21,20 @@ ALIGNMENT: you can choose "1" or "0" for mine or built-in method
 ```python2 my_hdr.py robot_power 1 1```  
 Noted that HD would take 3~5min to finish
 
-## Process:
-#### 0. Setting my camera 
+# Details:
+Content:
+- I. Images collecting
+- II. Images alignment
+- III. Generate HDR image
+- IV. Tone-mapping
+- V. Run the code
+- VI. Result
+- VII. More trials & final artifacts selected § VIII. Source code & images
+- IX. Reference papers
+
+### I. Images collecting
+
+#### a. Setting my camera 
 ```
 Dimensions: 6000x4000
 Device make: SONY
@@ -37,7 +49,7 @@ F number: f/16
 Exposure program: Manual
 Exposure time: from 1/3000 to 1/2
 ```
-#### 1. Collected images
+#### b. Collecting images
 exposures = [1/3000, 1/2000, 1/1500, 1/1000, 1/750, 1/500, 1/350, 1/250, 1/200, 1/125, 1/90, 1/60, 1/45, 1/30, 1/20, 1/15, 1/10, 1/8, 1/6, 1/4, 1/3, 0.5'']
 ```
 Display numbers: /raw_img/img_shutter_display.txt      # raw
@@ -70,13 +82,9 @@ Test images 900*600: stored at /test_img/Robot_Power  # used for quickly test
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robot_Power/DSC09939.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robot_Power/DSC09940.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robot_Power/DSC09941.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robot_Power/DSC09942.jpg" width="210">
 <img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robot_Power/DSC09943.jpg" width="210"><img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/test_img/Robot_Power/DSC09944.jpg" width="210">
 
-
-#### 2. Resized images for testing
-Stored at ```/test_img```  
-2 test set, 2*22images, with 900x600 pixels  
 Using online tranformation website: ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
 
-#### 3. Alignment (MTB + Image Pyramid + Offset Search)
+### 3. Alignment (MTB + Image Pyramid + Offset Search)
 The method is based on a pyramid of median threshold bitmaps, which are aligned using bitwise shift and differencing operations.  
 function name: ```Alignment```  
 input: unaligned images  
@@ -92,11 +100,3 @@ Pick the min difference as the offset
 At the next resolution level, we multiply this offset by 2 and repeat compute the minimum difference offset within a ±1 pixel
 Continues to the highest (original) resolution MTB, where we get our final offset result
 ```
-
-#### 4. Finding camera response function (CRF)
-
-#### 5. Recover radiance map
-
-#### x. Recover HDR image
-
-#### x. Tone-mapped image
