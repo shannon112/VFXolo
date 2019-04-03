@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 import random
 
 def readImagesAndTimes(image_num,image_quality):
-    # Pick the images and parameters we want
+    # Pick the images and parameter s we want
     chosenImgs, fileNumber, path, format = [], 0, "", ""
     if image_num == "robotics_corner":
         #chosenImgs = [1,5,8,13,16] # bad chosen, judging from mtb and eb
@@ -89,7 +89,7 @@ def alignmentImages(imgSet,times,pyramid_level):
             # generate median threshold bitmap and exclusive bitmap
             img_mtb = cv2.threshold(img_pyramids[i][j], img_median[i], 255, cv2.THRESH_BINARY)[1]
             img_eb = cv2.inRange(img_pyramids[i][j], img_median[i]-10, img_median[i]+10) # using the number 4 in paper casue a bad performance in my robot_power cases
-            ref_mtb = cv2.threshold(img_pyramids[0][j], img_median[0], 255, cv2.THRESH_BINARY)[1]
+            ref_mtb = cv2.threshold(img_pyramids[2][j], img_median[2], 255, cv2.THRESH_BINARY)[1]
             # plot mtb,eb of the highest level of pyramid
             if level==pyramid_level-1:
                 plt.subplot(len(imgSet_green), pyramid_level+1+2+1, 1+pyramid_level+1+i*(pyramid_level+1+2+1)).imshow(img_mtb, cmap="gray")
@@ -122,6 +122,12 @@ def alignmentImages(imgSet,times,pyramid_level):
     for i,img in enumerate(img_translation):
         img_rgb=img[:,:,::-1]
         plt.subplot(len(imgSet_green), pyramid_level+1+2+1, 1+pyramid_level+3+i*(pyramid_level+1+2+1)).imshow(img_rgb)
+    # Plot translated images, prnt info
+    fig8=plt.figure().suptitle('translated images by MTB algorithm')
+    for i,img in enumerate(img_translation):
+        img_rgb=img[:,:,::-1]
+        plt.subplot(1,len(imgSet_green), 1+i).imshow(img_rgb)
+
     print "imgSet_aligned ",img_translation.shape
     return img_translation
 
@@ -307,6 +313,7 @@ def main():
 
     # Save the best of them (ldrImgReinhard)
     cv2.imwrite(image_num+"_test.jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
+    cv2.imwrite(image_num+"_test2.jpg",ldrImgDrago*255, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     plt.show()
 
