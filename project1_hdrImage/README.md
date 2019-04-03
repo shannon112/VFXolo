@@ -1,6 +1,6 @@
 # Composite HDR images from multiple exposures
-A python implementation of **images alignment[1]**, **HDR[2]**, **tone mapping[3][4][5][6]**   
-Refs:  
+A python implementation of **images alignment[1]**, **HDR[2]**, **tone mapping[3][4][5][6]**(Using cv2).   
+Reference papers:    
 ```
 [1] Greg Ward, Fast Robust Image Registration for Compositing High Dynamic Range Photographs from Hand-Held Exposures, jgt 2003.  
 [2] Paul E. Debevec, Jitendra Malik, Recovering High Dynamic Range Radiance Maps from Photographs, SIGGRAPH 1997.  
@@ -10,14 +10,16 @@ Refs:
 [6] Drago, F., Myszkowski, K., Annen, T., and Chiba, N. 2003. Adaptive logarithmic mapping for displaying high contrast scenes. Computer Graphics Forum 22, 3 (Sept.), 419--426.
 ```
 Instruction to run:  
+- Usages:    
 ```python2 my_hdr.py PHOTO_NAME RESOLUTION ALIGNMENT```  
-> PHOTO_NAME: you can choose "robot_power" or "robotics_corner"   
-> RESOLUTION: you can choose "1" or "0" for 1800*1200 or 900*600   
-> ALIGNMENT: you can choose "1" or "0" for mine or built-in method   
+PHOTO_NAME: you can choose "robot_power" or "robotics_corner"   
+RESOLUTION: you can choose "1" or "0" for 1800*1200 or 900*600   
+ALIGNMENT: you can choose "1" or "0" for mine or built-in method
 
-examples:  
+- examples:   
 ```python2 my_hdr.py robot_corner 0 0```  
-```python2 my_hdr.py robot_power 1 1```  # noted that HD would take 3~5min to finish
+```python2 my_hdr.py robot_power 1 1```  
+Noted that HD would take 3~5min to finish
 
 ## Process:
 #### 0. Setting my camera 
