@@ -27,10 +27,8 @@ Content:
 - II. Images alignment
 - III. Generate HDR image
 - IV. Tone-mapping
-- V. Run the code
-- VI. Result
-- VII. More trials & final artifacts selected § VIII. Source code & images
-- IX. Reference papers
+- V. Result
+- VI. More trials & final artifacts selected
 
 ### I. Images collecting
 
@@ -84,7 +82,7 @@ Test images 900*600: stored at /test_img/Robot_Power  # used for quickly test
 
 Using online tranformation website: ```https://www.iloveimg.com/zh-tw/resize-image/resize-jpg```
 
-### 3. Alignment (MTB + Image Pyramid + Offset Search)
+### II. Alignment (MTB + Image Pyramid + Offset Search)
 The method is based on a pyramid of median threshold bitmaps, which are aligned using bitwise shift and differencing operations.  
 function name: ```Alignment```  
 input: unaligned images  
