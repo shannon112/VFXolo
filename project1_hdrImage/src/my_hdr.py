@@ -11,8 +11,8 @@ def readImagesAndTimes(image_num,image_quality):
     # Pick the images and parameters we want
     chosenImgs, fileNumber, path, format = [], 0, "", ""
     if image_num == "robotics_corner":
-        #chosenImgs = [1,5,8,13,16] # bad chosen, judging from mtb and eb #[8,10,12,14,16]
-        chosenImgs, fileNumber = [3,5,9,13,20], 57
+        #chosenImgs = [1,5,8,13,16] # bad chosen, judging from mtb and eb
+        chosenImgs, fileNumber = [8,10,12,14,16], 57 #[3,5,9,13,20], 57
         if image_quality == 0:
             path, format, pyramid_level = "../test_img/Robotics_Corner/DSC098", ".jpg", 5
         elif image_quality == 1:
@@ -306,7 +306,7 @@ def main():
     ldrImgReinhard = toneMappingReinhard(radianceMap)
 
     # Save the best of them (ldrImgReinhard)
-    cv2.imwrite(image_num+"_test.jpg",ldrImgDrago*255, [cv2.IMWRITE_JPEG_QUALITY,100])
+    cv2.imwrite(image_num+"_test.jpg",ldrImgReinhard*255, [cv2.IMWRITE_JPEG_QUALITY,100])
 
     plt.show()
 
