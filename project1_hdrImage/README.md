@@ -1,15 +1,23 @@
 # Composite HDR images from multiple exposures
-A python implementation of **images alignment**, **HDR**, **tone mapping**   
-Based on papers: 
+A python implementation of **images alignment[1]**, **HDR[2]**, **tone mapping[3][4][5][6]**   
+Refs:  
 ```
-1. Greg Ward, Fast Robust Image Registration for Compositing High Dynamic Range Photographs from Hand-Held Exposures, jgt 2003.  
-2. Paul E. Debevec, Jitendra Malik, Recovering High Dynamic Range Radiance Maps from Photographs, SIGGRAPH 1997.  
-3. Raanan Fattal, Dani Lischinski, Michael Werman, Gradient Domain High Dynamic Range Compression, SIGGRAPH 2002.  
+[1] Greg Ward, Fast Robust Image Registration for Compositing High Dynamic Range Photographs from Hand-Held Exposures, jgt 2003.  
+[2] Paul E. Debevec, Jitendra Malik, Recovering High Dynamic Range Radiance Maps from Photographs, SIGGRAPH 1997.  
+[3] Rafal Mantiuk , Karol Myszkowski , Hans-Peter Seidel, A perceptual framework for contrast processing of high dynamic range images, Proceedings of the 2nd symposium on Applied perception in graphics and visualization, August 26-28, 2005, A Coroña, Spain
+[4] E. Reinhard and K. Devlin, "Dynamic range reduction inspired by photoreceptor physiology," in IEEE Transactions on Visualization and Computer Graphics, vol. 11, no. 1, pp. 13-24, Jan.-Feb. 2005.
+[5] Frédo Durand , Julie Dorsey, Fast bilateral filtering for the display of high-dynamic-range images, ACM Transactions on Graphics (TOG), v.21 n.3, July 2002
+[6] Drago, F., Myszkowski, K., Annen, T., and Chiba, N. 2003. Adaptive logarithmic mapping for displaying high contrast scenes. Computer Graphics Forum 22, 3 (Sept.), 419--426.
 ```
-Instruction to run:
-```
-python2 hdr_img.py
-```
+Instruction to run:  
+```python2 my_hdr.py PHOTO_NAME RESOLUTION ALIGNMENT```  
+> PHOTO_NAME: you can choose "robot_power" or "robotics_corner"   
+> RESOLUTION: you can choose "1" or "0" for 1800*1200 or 900*600   
+> ALIGNMENT: you can choose "1" or "0" for mine or built-in method   
+
+examples:  
+```python2 my_hdr.py robot_corner 0 0```  
+```python2 my_hdr.py robot_power 1 1```  # noted that HD would take 3~5min to finish
 
 ## Process:
 #### 0. Setting my camera 
