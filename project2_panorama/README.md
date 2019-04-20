@@ -1,4 +1,4 @@
-# Composite HDR images from multiple exposures
+# Images Stitching(Panoramas)
 A python implementation of **Images Stitching(Panoramas)[1]**.   
 - SIFT feature detection[2]
 - feature matching[2]
