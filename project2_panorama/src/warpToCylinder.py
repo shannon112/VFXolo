@@ -35,7 +35,6 @@ def cylindrical_projection(imgs, focal_lengths):
             for x in range(-int(width/2), int(width/2)):
                 cylinder_x = focal_length*math.atan(x/focal_length)
                 cylinder_y = focal_length*y/math.sqrt(x**2+focal_length**2)
-
                 cylinder_x = int(round(cylinder_x + width/2))
                 cylinder_y = int(round(cylinder_y + height/2))
                 if cylinder_x >= 0 and cylinder_x < width and cylinder_y >= 0 and cylinder_y < height:
