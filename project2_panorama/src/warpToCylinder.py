@@ -1,0 +1,75 @@
+# coding: utf-8
+import os
+import sys
+import cv2
+import math
+import glob
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def load_images(source_dir):
+    img_filenames = sorted(glob.glob(os.path.join(source_dir, '*.jpg')))
+    image_list = [cv2.imread(img_filename, 1) for img_filename in img_filenames]
+    return np.array(image_list)
+
+def load_focal_length(source_dir):
+    info_filename = glob.glob(os.path.join(source_dir, 'info.txt'))
+    focal_length = []
+    f = open(info_filename[0])
+    for line in f:
+        if (line[0] == '#'): continue
+        (image_name, image_focal_length) = line.strip().split(" ")
+        focal_length.append(float(image_focal_length))
+    return focal_length
+
+"""
+Project image to cylinder
+
+Args:
+    img: input image
+    focal_length: input image's focal length
+
+Return:
+    Cylindrical projection of input image
+"""
+def cylindrical_projection(img, focal_length):
+    height, width, _ = img.shape
+    cylinder_proj = np.zeros(shape=img.shape, dtype=np.uint8)
+
+    for y in range(-int(height/2), int(height/2)):
+        for x in range(-int(width/2), int(width/2)):
+            cylinder_x = focal_length*math.atan(x/focal_length)
+            cylinder_y = focal_length*y/math.sqrt(x**2+focal_length**2)
+
+            cylinder_x = round(cylinder_x + width/2)
+            cylinder_y = round(cylinder_y + height/2)
+
+            if cylinder_x >= 0 and cylinder_x < width and cylinder_y >= 0 and cylinder_y < height:
+                cylinder_proj[cylinder_y][cylinder_x] = img[y+int(height/2)][x+int(width/2)]
+
+    # Crop black border
+    # ref: http://stackoverflow.com/questions/13538748/crop-black-edges-with-opencv
+    _, thresh = cv2.threshold(cv2.cvtColor(cylinder_proj, cv2.COLOR_BGR2GRAY), 1, 255, cv2.THRESH_BINARY)
+    contours = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    x, y, w, h = cv2.boundingRect(contours[0])
+
+    return cylinder_proj[y:y+h, x:x+w]
+
+def matched_pairs_plot(p1, p2, mp):
+    _, offset, _ = p1.shape
+    plt_img = np.concatenate((p1, p2), axis=1)
+    plt.figure(figsize=(10,10))
+    plt.imshow(plt_img)
+    for i in range(len(mp)):
+        plt.scatter(x=mp[i][0][1], y=mp[i][0][0], c='r')
+        plt.plot([mp[i][0][1], offset+mp[i][1][1]], [mp[i][0][0], mp[i][1][0]], 'y-', lw=1)
+        plt.scatter(x=offset+mp[i][1][1], y=mp[i][1][0], c='b')
+    plt.show()
+    cv2.waitKey(0)
+
+if __name__ == '__main__':
+    image_dir = sys.argv[1]
+    image_set = load_images(image_dir)
+    focal_length = load_focal_length(image_dir)
+    print (image_set.shape, focal_length)
