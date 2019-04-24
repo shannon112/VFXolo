@@ -1,8 +1,12 @@
-import warpToCylinder as wtc
 import sys
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import cv2
+
+import warpToCylinder as wtc
+from siftdetector import sift_detector
+from siftmatch import sift_matching
 
 if __name__ == '__main__':
     # read files
@@ -10,7 +14,8 @@ if __name__ == '__main__':
     image_set = wtc.load_images(image_dir)
     focal_length = wtc.load_focal_length(image_dir)
     image_set_size, height, width, _ =  image_set.shape
-    print ('image_set',image_set.shape, 'focal_length set',focal_length.shape)
+    print 'image_set',image_set.shape, 'focal_length set',focal_length.shape
+    sys.stdout.flush()
 
     # project to cylinder coordinate
     cylinder_projs = wtc.cylindrical_projection(image_set, focal_length)
@@ -19,63 +24,58 @@ if __name__ == '__main__':
         cylinder_proj_rgb = cylinder_proj[:,:,::-1]
         subfig = plt.subplot(2,math.ceil(image_set_size/2),i+1)
         subfig.imshow(cylinder_proj_rgb)
+        cv2.imwrite(str(i)+".jpg",cylinder_proj)
 
     # initail values
     stitched_image = cylinder_projs[0].copy()
     shifts = [[0, 0]]
     feature_cache = [[], []]
-
+    sift_threshold = 5
+    sift_cutoff = 1
 
     for i in range(1, image_set_size):
-        print('Computing ...... {}/{}'.format(str(i),str(image_set_size-1)))
-        img1 = cylinder_projs[i-1]
-        img2 = cylinder_projs[i]
+        print 'Computing ...... {}/{}'.format(str(i),str(image_set_size-1)); sys.stdout.flush()
+        img1 = str(i-1)+".jpg"
+        img2 = str(i)+".jpg"
 
-        print(' | Reload features in previous image .... ')
-        descriptions1, position1 = feature_cache
+        print ' | Reload features in previous image .... '; sys.stdout.flush()
+        keypints1, descriptors1 = feature_cache
         if i==1: #first loop
-            raw_features1 = feature.sift_detector(img1)
-            descriptions1, position1 = feature.sift_descriptor(img1, raw_features1)
-        print(' | | {} features are extracted'.formate(str(len(descriptions1))))
+            #raw_features1 = feature.sift_detector(img1)
+            #descriptions1, position1 = feature.sift_descriptor(img1, raw_features1)
+            keypints1, descriptors1 = sift_detector(img1,sift_threshold)
+        print ' | | | {} features are extracted'.format(str(len(descriptors1))); sys.stdout.flush()
 
 
-        print(' | Find features in image #{} ... '.format(str(i+1)))
-        raw_features2 = feature.sift_detector(img2)
-        descriptors2, position2 = feature.sift_descriptor(img2, raw_features2)
-        feature_cache = [descriptors2, position2]
-        print(' | | {} features are extracted'.formate(str(len(descriptions2))))
+        print ' | Find features in image #{} ... '.format(str(i+1)); sys.stdout.flush()
+        #raw_features2 = feature.sift_detector(img2)
+        #descriptors2, position2 = feature.sift_descriptor(img2, raw_features2)
+        keypints2, descriptors2 = sift_detector(img2,sift_threshold)
+        feature_cache = [keypints2, descriptors2]
+        print ' | | | {} features are extracted'.format(str(len(descriptors2))); sys.stdout.flush()
 
 
-        '''
-        if const.DEBUG:
-            cv2.imshow('cr1', corner_response1)
-            cv2.imshow('cr2', corner_response2)
-            cv2.waitKey(0)
+        print ' | Feature matching .... '; sys.stdout.flush()
+        matched_pairs = sift_matching(img1, img2, keypints1, descriptors1, keypints2, descriptors2, sift_cutoff)
+        print ' | | ' + str(len(matched_pairs)) + ' features matched.'; sys.stdout.flush()
 
-        print(' - Feature matching .... ', end='', flush=True)
-        matched_pairs = feature.matching(descriptions1, descriptors2, position1, position2, pool, y_range=const.MATCHING_Y_RANGE)
-        print(str(len(matched_pairs)) +' features matched.')
-
-        if const.DEBUG:
-            utils.matched_pairs_plot(img1, img2, matched_pairs)
-
-        print(' - Find best shift using RANSAC .... ', end='', flush=True)
+        print ' - Find best shift using RANSAC .... '; sys.stdout.flush()
         shift = stitch.RANSAC(matched_pairs, shifts[-1])
         shifts += [shift]
-        print('best shift ', shift)
+        print 'best shift ', shift
 
-        print(' - Stitching image .... ', end='', flush=True)
+        print ' - Stitching image .... '; sys.stdout.flush()
         stitched_image = stitch.stitching(stitched_image, img2, shift, pool, blending=True)
         cv2.imwrite(str(i) +'.jpg', stitched_image)
-        print('Saved.')
+        print 'Saved.'; sys.stdout.flush()
 
 
-    print('Perform end to end alignment')
+    print 'Perform end to end alignment'; sys.stdout.flush()
     aligned = stitch.end2end_align(stitched_image, shifts)
     cv2.imwrite('aligned.jpg', aligned)
 
-    print('Cropping image')
+    print 'Cropping image'; sys.stdout.flush()
     cropped = stitch.crop(aligned)
     cv2.imwrite('cropped.jpg', cropped)
-    '''
-plt.show()
+
+#plt.show()
