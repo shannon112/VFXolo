@@ -45,8 +45,10 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
 
     matched_pairs = []
     for i in range(min(len(kpi), len(kpt))):
-    	pt_a = (int(kpt[i,1]), int(kpt[i,0] + hdif)) #templete points
-    	pt_b = (int(kpi[i,1] + w2), int(kpi[i,0])) #img points
+        distance = math.sqrt(( kpt[i,1] - kpi[i,1] )**2 + (kpt[i,0] - kpi[i,0])**2 )
+        if distance < 400 and distance>130:
+            pt_a = (int(kpt[i,1]), int(kpt[i,0] + hdif)) #templete points
+            pt_b = (int(kpi[i,1] + w2), int(kpi[i,0])) #img points
     	#cv2.line(newimg, pt_a, pt_b, (255, 0, 0))
         matched_pairs.append([pt_a,pt_b])
     return matched_pairs
