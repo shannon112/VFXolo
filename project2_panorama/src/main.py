@@ -62,16 +62,16 @@ if __name__ == '__main__':
         print ' | | ' + str(len(matched_pairs)) + ' features matched.'; sys.stdout.flush()
 
         print ' | Find best shift using RANSAC .... '; sys.stdout.flush()
-        shift = stitch.RANSAC(matched_pairs, shifts[-1])
-        shifts += shift
+        shift = stitch.RANSAC(matched_pairs)
+        shifts.append(shift)
         print ' | | best shift ', shift
 
     print shifts
-    '''
+
     print 'Stitching image .... '; sys.stdout.flush()
     stitched_image = stitch.stitching(shift, image_set_size, height, width)
     print ' | Saved as final.jpg'; sys.stdout.flush()
-
+    '''
     print 'Perform end to end alignment'; sys.stdout.flush()
     aligned = stitch.end2end_align(stitched_image, shifts)
     cv2.imwrite('aligned.jpg', aligned)

@@ -4,6 +4,7 @@ import numpy as np
 import cv2
 import constant as const
 import multiprocessing as mp
+from PIL import ImageTk, Image
 
 """
 Find best shift using RANSAC
@@ -18,7 +19,7 @@ Returns:
 Raise:
     ValueError: Shift direction NOT same as previous shift.
 """
-def RANSAC(matched_pairs, prev_shift):
+def RANSAC(matched_pairs):
     matched_pairs = np.asarray(matched_pairs)
     use_random = True if len(matched_pairs) > const.RANSAC_K else False
 
@@ -47,12 +48,8 @@ def RANSAC(matched_pairs, prev_shift):
         if inliner > max_inliner:
             max_inliner = inliner
             best_shift = shift
-    '''
-    if prev_shift[1]*best_shift[1] < 0:
-        print('\n\nBest shift:', best_shift)
-        raise ValueError('Shift direction NOT same as previous shift.')
-    '''
-    return best_shift
+
+    return list(best_shift)
 
 
 """
@@ -67,4 +64,35 @@ Args:
 Returns:
     A stitched image
 """
-#def stitching(img1, img2, shift, blending=True):
+def stitching(shift_list, image_set_size, height, width):
+    img_list = []
+    for i in range(image_set_size):
+        img = Image.open(str(i)+'.jpg') # size = 450x300
+        img_list.append(img)
+    shift_set = np.array(shift_list)
+
+    shift_x = 0 #-1423
+    shift_y = 0
+    shift_y_max = -1*float("inf") #30
+    shift_y_min = float("inf") #-1
+    for shift in shift_list:
+        shift_x += shift[0]
+        shift_y += shift[1]
+        if shift_y<shift_y_min: shift_y_min=shift_y
+        if shift_y>shift_y_max: shift_y_max=shift_y
+
+    new_size = (width+abs(shift_x),height+abs(shift_y_min)+abs(shift_y_max)) # w,h
+    new_im = Image.new("RGBA", new_size) # makes the black image
+
+    for i,img in enumerate(img_list):
+        shift_sum = np.array([0,0])
+        for shift in shift_set[:i]: shift_sum+=shift
+        shift_x_accumulation,_ = shift_sum
+        shift_sum = np.array([0,0])
+        for shift in shift_set[:len(img_list)-i]: shift_sum+=shift
+        _,shift_y_accumulation = shift_sum
+        new_im.paste(img, (abs(shift_x_accumulation),abs(shift_y_min)+shift_y_accumulation))
+        print abs(shift_x_accumulation) , abs(shift_y_min)+shift_y_accumulation
+    new_im.show()
+    new_im.save('final.jpg')
+    return 0

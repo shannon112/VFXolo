@@ -7,6 +7,7 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
 
     img = cv2.imread(imagename)
     template = cv2.imread(templatename)
+    height, width =  img.shape[:2]
 
     flann_params = dict(algorithm=1, trees=4)
     flann = cv2.flann_Index(np.asarray(di, np.float32), flann_params)
@@ -37,9 +38,9 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
 
     #if scanning view from left turn to right
     matched_pairs = []
-    matched_x_max_thres = 240
-    matched_x_min_thres = 60
-    matched_y_abs_thres = 20
+    matched_x_max_thres = width - width/5
+    matched_x_min_thres = width/5
+    matched_y_abs_thres = height/20
 
     for i in range(np.array(kpi_cut).shape[0]):
         distance_x = kpt_cut[i][1] - kpi_cut[i][1]
