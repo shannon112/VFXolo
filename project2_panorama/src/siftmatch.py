@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import itertools
+import math
 
 def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
 
@@ -34,22 +35,18 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     	else:
     		break
 
-    h1, w1 = img.shape[:2]
-    h2, w2 = template.shape[:2]
-    nWidth = w1 + w2
-    nHeight = max(h1, h2)
-    hdif = (h1 - h2) / 2
-    newimg = np.zeros((nHeight, nWidth, 3), np.uint8)
-    newimg[hdif:hdif+h2, :w2] = template
-    newimg[:h1, w2:w1+w2] = img
-
+    #if scanning view from left turn to right
     matched_pairs = []
-    for i in range(min(len(kpi), len(kpt))):
-        distance = math.sqrt(( kpt[i,1] - kpi[i,1] )**2 + (kpt[i,0] - kpi[i,0])**2 )
-        if distance < 400 and distance>130:
-            pt_a = (int(kpt[i,1]), int(kpt[i,0] + hdif)) #templete points
-            pt_b = (int(kpi[i,1] + w2), int(kpi[i,0])) #img points
-    	#cv2.line(newimg, pt_a, pt_b, (255, 0, 0))
-        matched_pairs.append([pt_a,pt_b])
+    matched_x_max_thres = 240
+    matched_x_min_thres = 60
+    matched_y_abs_thres = 20
+
+    for i in range(np.array(kpi_cut).shape[0]):
+        distance_x = kpt_cut[i][1] - kpi_cut[i][1]
+        distance_y = abs(kpt_cut[i][0] - kpi_cut[i][0])
+        if distance_y<matched_y_abs_thres and distance_x < matched_x_max_thres and distance_x > matched_x_min_thres:
+            pt_a = (int(kpt_cut[i][1]), int(kpt_cut[i][0]))
+            pt_b = (int(kpi_cut[i][1]), int(kpi_cut[i][0]))
+            matched_pairs.append([pt_a,pt_b])
+    print matched_pairs
     return matched_pairs
-    #cv2.imwrite('matches.jpg', newimg)

@@ -52,17 +52,6 @@ def cylindrical_projection(imgs, focal_lengths):
 
     return cylinder_projs
 
-def matched_pairs_plot(p1, p2, mp):
-    _, offset, _ = p1.shape
-    plt_img = np.concatenate((p1, p2), axis=1)
-    plt.figure(figsize=(10,10))
-    plt.imshow(plt_img)
-    for i in range(len(mp)):
-        plt.scatter(x=mp[i][0][1], y=mp[i][0][0], c='r')
-        plt.plot([mp[i][0][1], offset+mp[i][1][1]], [mp[i][0][0], mp[i][1][0]], 'y-', lw=1)
-        plt.scatter(x=offset+mp[i][1][1], y=mp[i][1][0], c='b')
-    plt.show()
-    cv2.waitKey(0)
 
 if __name__ == '__main__':
     image_dir = sys.argv[1]
