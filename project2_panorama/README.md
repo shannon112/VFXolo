@@ -1,10 +1,12 @@
 # Images Stitching(Panoramas)
 A python implementation of **Images Stitching(Panoramas)[1]**.   
-- SIFT feature detection[2]
-- feature matching[2]
-- image matching
-- bundle adjustment
-- blending
+- feature detection[2] ```SIFT detector, SIFT discriptor```
+- feature matching ```Brute force(2-norm distance), flann(kd-tree, knn-search)```
+- image matching```RANSAC finding shift```
+- blending```Linear filter on edge, Linear filter on overlapRegion, Naive overlap stitching```
+- end to end alignment```Scattering y displacement```
+- cropping  
+
 Reference papers:    
 ```
 [1] M. Brown, D. G. Lowe, Recognising Panoramas, ICCV 2003
