@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     # initail values
     stitched_image = cylinder_projs[0].copy() #most left one as initail
-    shifts = [] #every shift between two nearby images
+    shifts = [[0,0]] #every shift between two nearby images
     feature_cache = [[], []] #store last image feature
     sift_threshold = 5
     sift_cutoff = 0.0003
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     print shifts
 
     print 'Stitching image .... '; sys.stdout.flush()
-    stitched_image = stitch.stitching(shifts, image_set_size, height, width)
+    stitched_image = stitch.stitching_w_blending(shifts, image_set_size, height, width)
     print ' | Saved as final.jpg'; sys.stdout.flush()
     '''
     print 'Perform end to end alignment'; sys.stdout.flush()

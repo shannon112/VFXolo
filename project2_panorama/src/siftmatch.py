@@ -10,8 +10,8 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     height, width =  img.shape[:2]
 
     flann_params = dict(algorithm=1, trees=4)
-    flann = cv2.flann_Index(np.asarray(dt, np.float32), flann_params)
-    idx, dist = flann.knnSearch(np.asarray(di, np.float32), 1, params={})
+    flann = cv2.flann_Index(np.asarray(di, np.float32), flann_params)
+    idx, dist = flann.knnSearch(np.asarray(dt, np.float32), 1, params={})
     del flann
 
     dist = dist[:,0]/2500.0
@@ -19,8 +19,8 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     idx = idx.reshape(-1).tolist()
     indices = range(len(dist))
     indices.sort(key=lambda i: dist[i])
-    dist = [dist[i] for i in indices]
-    idx = [idx[i] for i in indices]
+    dist = [dist[i] for i in indices] #sorted dist
+    idx = [idx[i] for i in indices] #sorted idx
 
     kpi_cut = []
     for i, dis in itertools.izip(idx, dist):
@@ -34,7 +34,7 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     	if dis < cutoff:
     		kpt_cut.append(kpt[i])
     	else:
-    		break
+            break
 
     #if scanning view from left turn to right
     matched_pairs = []

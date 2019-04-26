@@ -96,3 +96,69 @@ def stitching_wo_blending(shift_list, image_set_size, height, width):
     new_im.show()
     new_im.save('final.jpg')
     return 0
+
+
+def stitching_w_blending(shift_list, image_set_size, height, width):
+    shift_set = np.array(shift_list)
+    img_list = []
+    for i in range(image_set_size):
+        img = cv2.imread(str(i)+'.jpg') # size = 450x300
+        img_list.append(img)
+
+    shift_x = 0 #-1423
+    shift_y = 0
+    shift_y_max = -1*float("inf") #30
+    shift_y_min = float("inf") #-1
+    for shift in shift_list:
+        shift_x += shift[0]
+        shift_y += shift[1]
+        if shift_y<shift_y_min: shift_y_min=shift_y
+        if shift_y>shift_y_max: shift_y_max=shift_y
+
+    # calculate left-top point coordinate of each image coming in pano scale
+    # camera from left turn right
+    # shift would be x,y    x<0  y not sure
+    # pano coordinate go down go right is positive
+    shift_acc=[] #shift_accumulations
+    shift_sum = np.array([0,0])
+    for shift in shift_set:
+        shift_sum+=shift
+        temp = shift_sum.copy()
+        temp[0] = -1*temp[0]
+        shift_acc.append(temp)
+    print shift_acc, len(shift_acc)
+
+    new_img = np.zeros( (height+abs(shift_y_min)+abs(shift_y_max), width+abs(shift_x),3),dtype=np.uint8)
+    print new_img.shape # (481,1723,3)
+    new_h, new_w  = new_img.shape[:2]
+
+    left_br_x, right_br_x = 0, 0  #boundoury
+    for img_num,img in enumerate(img_list):
+        bl_r = 15 #fixed_bl_region radius, #blending_r
+        for i,new_i in enumerate(range(shift_acc[img_num][1]+abs(shift_y_min), height+shift_acc[img_num][1]+abs(shift_y_min))):
+            if img_num == 0: #shape |-\
+                left_br_x = 0
+                right_br_x = ((shift_acc[img_num][0]+width) + shift_acc[img_num+1][0])/2
+                for j,new_j in enumerate(range(0, right_br_x-bl_r)): # flatten, uniform
+                    new_img[new_i][new_j] = img[i][j]
+                for j,new_j in enumerate(range(right_br_x-bl_r, right_br_x+bl_r)):  # linear decreasing
+                    new_img[new_i][new_j] += (((2*bl_r-j)/float(2*bl_r)) * img[i][j + right_br_x - bl_r]).astype(np.uint8)
+
+            elif img_num == image_set_size-1: #shape /-|
+                right_br_x = new_w
+                for j,new_j in enumerate(range(left_br_x-bl_r, left_br_x+bl_r)): # linear increasing
+                    new_img[new_i][new_j] += ((j/float(2*bl_r)) * img[i][ j + (left_br_x-bl_r) - shift_acc[img_num][0]]).astype(np.uint8)
+                for j,new_j in enumerate(range(left_br_x+bl_r, new_w)): # flatten, uniform
+                    new_img[new_i][new_j] = img[i][ j + (left_br_x+bl_r) - shift_acc[img_num][0]]
+
+            else: #shape /-\
+                right_br_x = ((shift_acc[img_num][0]+width) + shift_acc[img_num+1][0])/2
+                for j,new_j in enumerate(range(left_br_x-bl_r, left_br_x+bl_r)): # linear increasing
+                    new_img[new_i][new_j] += ((j/float(2*bl_r)) * img[i][ j + (left_br_x-bl_r) - shift_acc[img_num][0]]).astype(np.uint8)
+                for j,new_j in enumerate(range(left_br_x+bl_r, right_br_x-bl_r)): # flatten, uniform
+                    new_img[new_i][new_j] = img[i][ j + (left_br_x+bl_r) - shift_acc[img_num][0]]
+                for j,new_j in enumerate(range(right_br_x-bl_r, right_br_x+bl_r)):  # linear decreasing
+                    new_img[new_i][new_j] += (((2*bl_r-j)/float(2*bl_r)) * img[i][j + (right_br_x-bl_r) - shift_acc[img_num][0]]).astype(np.uint8)
+        left_br_x = right_br_x
+    cv2.imwrite('translation.jpg', new_img)
+    return 0
