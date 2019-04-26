@@ -3,8 +3,49 @@ import cv2
 import itertools
 import math
 
-def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
+def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di, cutoff):
+    # cutoff around 0.5
+    #print 'dt',len(dt[0]),len(dt) #128 dim feature discriptor
+    #print 'di',len(di[0]),len(di) #128 dim feature discriptor
+    img = cv2.imread(imagename)
+    template = cv2.imread(templatename)
+    height, width =  img.shape[:2]
 
+    # brute force soultion, pick 2-norm distance minimum as a pair
+    dis_list = [] # index is templete's index, content is [dis, image's index]
+    for last_feature in dt:
+        min_dis = float("inf")
+        min_idx = 0 # is image's index
+        for i,now_feature in enumerate(di):
+            dis = math.sqrt(np.sum((np.array(last_feature) - np.array(now_feature))**2))
+            if dis < min_dis: min_dis, min_idx = dis, i
+        dis_list.append([min_dis,min_idx])
+
+    # filter dis is too large
+    matched_pairs = []
+    for i,dis in enumerate(dis_list):
+        if dis[0] < cutoff:
+            matched_pairs.append([kpt[i][:2], kpi[dis[1]][:2]])
+
+    # if scanning view from left turn to right
+    # filter x is positive and y out of range
+    refined_matched_pairs = []
+    matched_x_max_thres = width - width/5
+    matched_x_min_thres = width/5
+    matched_y_abs_thres = height/20
+    for matched_pair in matched_pairs:
+        distance_x = matched_pair[0][1] - matched_pair[1][1]
+        distance_y = abs(matched_pair[0][0] - matched_pair[1][0])
+        if distance_y<matched_y_abs_thres and distance_x < matched_x_max_thres and distance_x > matched_x_min_thres:
+            refined_matched_pairs.append(
+            [ [int(matched_pair[0][1]),int(matched_pair[0][0])],
+            [int(matched_pair[1][1]),int(matched_pair[1][0])] ])
+    print refined_matched_pairs
+    return refined_matched_pairs
+
+
+def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
+    # cutoff around 0.0003
     img = cv2.imread(imagename)
     template = cv2.imread(templatename)
     height, width =  img.shape[:2]

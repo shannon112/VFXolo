@@ -65,6 +65,7 @@ Returns:
     A stitched image
 """
 def stitching_wo_blending(shift_list, image_set_size, height, width):
+    # shift_list w/o initail [0,0]
     img_list = []
     for i in range(image_set_size):
         img = Image.open(str(i)+'.jpg') # size = 450x300
@@ -92,13 +93,13 @@ def stitching_wo_blending(shift_list, image_set_size, height, width):
         for shift in shift_set[:len(img_list)-i]: shift_sum+=shift
         _,shift_y_accumulation = shift_sum
         new_im.paste(img, (abs(shift_x_accumulation),abs(shift_y_min)+shift_y_accumulation))
-        print abs(shift_x_accumulation) , abs(shift_y_min)+shift_y_accumulation
     new_im.show()
     new_im.save('final.jpg')
     return 0
 
 
 def stitching_w_blending(shift_list, image_set_size, height, width):
+    # shift_list w/ initail [0,0]
     shift_set = np.array(shift_list)
     img_list = []
     for i in range(image_set_size):
@@ -129,8 +130,8 @@ def stitching_w_blending(shift_list, image_set_size, height, width):
     print shift_acc, len(shift_acc)
 
     new_img = np.zeros( (height+abs(shift_y_min)+abs(shift_y_max), width+abs(shift_x),3),dtype=np.uint8)
-    print new_img.shape # (481,1723,3)
     new_h, new_w  = new_img.shape[:2]
+    print new_img.shape # (481,1723,3)
 
     left_br_x, right_br_x = 0, 0  #boundoury
     for img_num,img in enumerate(img_list):
