@@ -1,7 +1,12 @@
+# siftdetector.py sift threshold
+SIFT_THRESHOLD        = 5
+
+# siftmatch.py sift feature matching cutoff
+SIFT_MATCH_CUTOFF     = 0.5 #BF
+#SIFT_MATCH_CUTOFF     = 0.0003 #flann
+Matched_x_thres_partition = 5 # if == inf means no threshold
+Matched_y_thres_partition = 20 # if == 1 means no threshold
+
+# stitch.py def RANSAC(matched_pairs):
 RANSAC_K              = 1000
 RANSAC_THRES_DISTANCE = 3
-
-ALPHA_BLEND_WINDOW = 2
-
-FEATURE_CUT_X_EDGE = 10
-FEATURE_CUT_Y_EDGE = 50

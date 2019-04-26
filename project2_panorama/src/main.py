@@ -33,8 +33,6 @@ if __name__ == '__main__':
     stitched_image = cylinder_projs[0].copy() #most left one as initail
     shifts = [[0,0]] #every shift between two nearby images
     feature_cache = [[], []] #store last image feature
-    sift_threshold = 5
-    sift_cutoff = 0.5#0.0003
 
     #stiching from left to right
     for i in range(1, image_set_size):
@@ -47,18 +45,18 @@ if __name__ == '__main__':
         print ' | Reload features in previous image .... '; sys.stdout.flush()
         keypints1, descriptors1 = feature_cache
         if i==1: #first loop
-            keypints1, descriptors1 = sift_detector(img1,sift_threshold)
+            keypints1, descriptors1 = sift_detector(img1)
         print ' | | | {} features are extracted'.format(str(len(descriptors1))); sys.stdout.flush()
 
 
         print ' | Find features in image #{} ... '.format(str(i+1)); sys.stdout.flush()
-        keypints2, descriptors2 = sift_detector(img2,sift_threshold)
+        keypints2, descriptors2 = sift_detector(img2)
         feature_cache = [keypints2, descriptors2]
         print ' | | | {} features are extracted'.format(str(len(descriptors2))); sys.stdout.flush()
 
 
         print ' | Feature matching .... '; sys.stdout.flush()
-        matched_pairs = sift_matching_BT(img1, img2 , keypints1, descriptors1, keypints2, descriptors2, sift_cutoff)
+        matched_pairs = sift_matching_BT(img1, img2 , keypints1, descriptors1, keypints2, descriptors2)
         print ' | | ' + str(len(matched_pairs)) + ' features matched.'; sys.stdout.flush()
 
         print ' | Find best shift using RANSAC .... '; sys.stdout.flush()

@@ -2,8 +2,10 @@ import numpy as np
 import cv2
 import itertools
 import math
+import constant as const
 
-def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di, cutoff):
+def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di):
+    cutoff = const.SIFT_MATCH_CUTOFF
     # cutoff around 0.5
     #print 'dt',len(dt[0]),len(dt) #128 dim feature discriptor
     #print 'di',len(di[0]),len(di) #128 dim feature discriptor
@@ -30,9 +32,9 @@ def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di, cutoff):
     # if scanning view from left turn to right
     # filter x is positive and y out of range
     refined_matched_pairs = []
-    matched_x_max_thres = width - width/5
-    matched_x_min_thres = width/5
-    matched_y_abs_thres = height/20
+    matched_x_max_thres = width - width/ const.Matched_x_thres_partition
+    matched_x_min_thres = width / const.Matched_x_thres_partition
+    matched_y_abs_thres = height / const.Matched_y_thres_partition
     for matched_pair in matched_pairs:
         distance_x = matched_pair[0][1] - matched_pair[1][1]
         distance_y = abs(matched_pair[0][0] - matched_pair[1][0])
@@ -79,9 +81,9 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
 
     #if scanning view from left turn to right
     matched_pairs = []
-    matched_x_max_thres = width - width/5
-    matched_x_min_thres = width/5
-    matched_y_abs_thres = height/20
+    matched_x_max_thres = width - width/ const.Matched_x_thres_partition
+    matched_x_min_thres = width / const.Matched_x_thres_partition
+    matched_y_abs_thres = height / const.Matched_y_thres_partition
 
     for i in range(np.array(kpi_cut).shape[0]):
         distance_x = kpt_cut[i][1] - kpi_cut[i][1]

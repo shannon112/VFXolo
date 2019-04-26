@@ -6,16 +6,17 @@ from scipy.stats import multivariate_normal
 from numpy.linalg import norm
 import numpy.linalg
 import sys
+import constant as const
 
 # INPUTS: imagename (filename of image, string)
 #         threshold (constrast threshold, int or float)
 # OUTPUT: keypoints (an array of four column, where the first is the x location, the second is the y location, the third is the scale, and the fourth is the orientation)
 #         descriptors (an array of 128 columns, which correspond to the SIFT descriptor)
 
-def sift_detector(imagename, threshold):
+def sift_detector(imagename):
     # SIFT Detector
     #--------------
-
+    threshold = const.SIFT_THRESHOLD
     original = ndimage.imread(imagename, flatten=True)
 
     # SIFT Parameters

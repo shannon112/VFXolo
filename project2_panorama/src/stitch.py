@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 import constant as const
-import multiprocessing as mp
 from PIL import ImageTk, Image
 
 """
