@@ -52,7 +52,7 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     template = cv2.imread(templatename)
     height, width =  img.shape[:2]
 
-    flann_params = dict(algorithm=1, trees=4)
+    flann_params = dict(algorithm=1, trees=4) #kd-tree
     flann = cv2.flann_Index(np.asarray(di, np.float32), flann_params)
     idx, dist = flann.knnSearch(np.asarray(dt, np.float32), 1, params={})
     del flann

@@ -9,6 +9,7 @@ Returns:
     A image that fixed the y-asix shift error
 """
 def end2end_align(img, shifts):
+    shifts = np.array(shifts)
     sum_y, sum_x = np.sum(shifts, axis=0)
 
     y_shift = np.abs(sum_y)
