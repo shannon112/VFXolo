@@ -10,8 +10,8 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     height, width =  img.shape[:2]
 
     flann_params = dict(algorithm=1, trees=4)
-    flann = cv2.flann_Index(np.asarray(di, np.float32), flann_params)
-    idx, dist = flann.knnSearch(np.asarray(dt, np.float32), 1, params={})
+    flann = cv2.flann_Index(np.asarray(dt, np.float32), flann_params)
+    idx, dist = flann.knnSearch(np.asarray(di, np.float32), 1, params={})
     del flann
 
     dist = dist[:,0]/2500.0

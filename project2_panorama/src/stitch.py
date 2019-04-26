@@ -64,7 +64,7 @@ Args:
 Returns:
     A stitched image
 """
-def stitching(shift_list, image_set_size, height, width):
+def stitching_wo_blending(shift_list, image_set_size, height, width):
     img_list = []
     for i in range(image_set_size):
         img = Image.open(str(i)+'.jpg') # size = 450x300
