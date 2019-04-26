@@ -4,7 +4,7 @@ A python implementation of **Images Stitching(Panoramas)[1]**.
 - feature matching ```Brute force(2-norm distance), flann(kd-tree, knn-search)```
 - image matching```RANSAC finding shift```
 - blending```Linear filter on edge, Linear filter on overlapRegion, Naive overlap stitching```
-- end to end alignment```scatter y displacement```
+- end to end alignment```Scattering y displacement```
 - cropping  
 
 Reference papers:    
