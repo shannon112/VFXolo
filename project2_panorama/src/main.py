@@ -69,7 +69,7 @@ if __name__ == '__main__':
     print shifts
 
     print 'Stitching image .... '; sys.stdout.flush()
-    stitched_image = stitch.stitching(shift, image_set_size, height, width)
+    stitched_image = stitch.stitching(shifts, image_set_size, height, width)
     print ' | Saved as final.jpg'; sys.stdout.flush()
     '''
     print 'Perform end to end alignment'; sys.stdout.flush()
