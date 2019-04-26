@@ -10,3 +10,4 @@ Matched_y_thres_partition = 20 # if == 1 means no threshold
 # stitch.py def RANSAC(matched_pairs):
 RANSAC_K              = 1000
 RANSAC_THRES_DISTANCE = 3
+OVERLAP_REGION_RADIUS = 15

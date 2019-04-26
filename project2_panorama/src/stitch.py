@@ -134,7 +134,7 @@ def stitching_w_blending(shift_list, image_set_size, height, width):
 
     left_br_x, right_br_x = 0, 0  #boundoury
     for img_num,img in enumerate(img_list):
-        bl_r = 15 #fixed_bl_region radius, #blending_r
+        bl_r = const.OVERLAP_REGION_RADIUS #fixed_bl_region radius, #blending_r
         for i,new_i in enumerate(range(shift_acc[img_num][1]+abs(shift_y_min), height+shift_acc[img_num][1]+abs(shift_y_min))):
             if img_num == 0: #shape |-\
                 left_br_x = 0
