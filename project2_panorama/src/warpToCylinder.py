@@ -19,7 +19,6 @@ def load_focal_length(source_dir):
     focal_length = []
     f = open(info_filename[0])
     for line in f:
-        if (line[0] == '#'): continue
         (image_name, image_focal_length) = line.strip().split(" ")
         focal_length.append(float(image_focal_length))
     return np.array(focal_length)

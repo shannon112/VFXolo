@@ -126,11 +126,11 @@ def stitching_w_blending(shift_list, image_set_size, height, width):
         temp = shift_sum.copy()
         temp[0] = -1*temp[0]
         shift_acc.append(temp)
-    print shift_acc, len(shift_acc)
+    #print shift_acc, len(shift_acc)
 
     new_img = np.zeros( (height+abs(shift_y_min)+abs(shift_y_max), width+abs(shift_x),3),dtype=np.uint8)
     new_h, new_w  = new_img.shape[:2]
-    print new_img.shape # (481,1723,3)
+    #print new_img.shape # (481,1723,3)
 
     left_br_x, right_br_x = 0, 0  #boundoury
     for img_num,img in enumerate(img_list):
@@ -160,5 +160,4 @@ def stitching_w_blending(shift_list, image_set_size, height, width):
                 for j,new_j in enumerate(range(right_br_x-bl_r, right_br_x+bl_r)):  # linear decreasing
                     new_img[new_i][new_j] += (((2*bl_r-j)/float(2*bl_r)) * img[i][j + (right_br_x-bl_r) - shift_acc[img_num][0]]).astype(np.uint8)
         left_br_x = right_br_x
-    cv2.imwrite('translation.jpg', new_img)
-    return 0
+    return new_img

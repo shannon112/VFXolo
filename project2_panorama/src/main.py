@@ -10,6 +10,7 @@ from siftdetector import sift_detector
 from siftmatch import sift_matching_BT
 import stitch
 import constant as const
+import crop
 
 if __name__ == '__main__':
     # read files
@@ -48,36 +49,43 @@ if __name__ == '__main__':
             keypints1, descriptors1 = sift_detector(img1)
         print ' | | | {} features are extracted'.format(str(len(descriptors1))); sys.stdout.flush()
 
-
         print ' | Find features in image #{} ... '.format(str(i+1)); sys.stdout.flush()
         keypints2, descriptors2 = sift_detector(img2)
         feature_cache = [keypints2, descriptors2]
         print ' | | | {} features are extracted'.format(str(len(descriptors2))); sys.stdout.flush()
 
-
         print ' | Feature matching .... '; sys.stdout.flush()
         matched_pairs = sift_matching_BT(img1, img2 , keypints1, descriptors1, keypints2, descriptors2)
         print ' | | ' + str(len(matched_pairs)) + ' features matched.'; sys.stdout.flush()
+        print ' | | matched pairs ', matched_pairs
 
         print ' | Find best shift using RANSAC .... '; sys.stdout.flush()
         shift = stitch.RANSAC(matched_pairs)
         shifts.append(shift)
         print ' | | best shift ', shift
-
+    print 'Completed feature matching! Here are all shifts:'
     print shifts
 
-    print 'Stitching image .... '; sys.stdout.flush()
+    print 'Stitching image ... '; sys.stdout.flush()
     stitched_image = stitch.stitching_w_blending(shifts, image_set_size, height, width)
-    print ' | Saved as final.jpg'; sys.stdout.flush()
+    cv2.imwrite('pano.jpg', stitched_image)
+    print ' | Saved as pano.jpg'; sys.stdout.flush()
+    pano_image = stitched_image.copy()
 
-    '''
-    print 'Perform end to end alignment'; sys.stdout.flush()
-    aligned = stitch.end2end_align(stitched_image, shifts)
-    cv2.imwrite('aligned.jpg', aligned)
+    if const.ALIGN:
+        print "not finished yet"
+        '''
+        print 'End to end alignment ... '; sys.stdout.flush()
+        aligned_image = alignment.e2eAlign(pano_image, shifts)
+        cv2.imwrite('aligned_pano.jpg', aligned_image)
+        print ' | Saved as aligned_pano.jpg'; sys.stdout.flush()
+        pano_image = aligned_image.copy()
+        '''
 
-    print 'Cropping image'; sys.stdout.flush()
-    cropped = stitch.crop(aligned)
-    cv2.imwrite('cropped.jpg', cropped)
-    '''
-
+    if const.CROP:
+        print 'Cropping image ... '; sys.stdout.flush()
+        cropped_image = crop.crop(pano_image)
+        cv2.imwrite('cropped_pano.jpg', cropped_image)
+        print ' | Saved as cropped_pano.jpg'; sys.stdout.flush()
+        pano_image = cropped_image.copy()
 #plt.show()

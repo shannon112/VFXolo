@@ -1,3 +1,7 @@
+'''
+All constants in this project
+Could be adjusted to get a better performance
+'''
 # siftdetector.py sift threshold
 SIFT_THRESHOLD        = 5
 
@@ -11,3 +15,11 @@ Matched_y_thres_partition = 20 # if == 1 means no threshold
 RANSAC_K              = 1000
 RANSAC_THRES_DISTANCE = 3
 OVERLAP_REGION_RADIUS = 15
+
+# crop.py max_black_pixel_num_thres  = final_image_width / denominator
+CROP_DENOMINATOR = 50
+
+# main.py applying end to end alignment or not
+ALIGN = False
+# main.py applying cropping or not
+CROP = True

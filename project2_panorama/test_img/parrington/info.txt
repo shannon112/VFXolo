@@ -1,4 +1,3 @@
-# filename    focal_length
 00.jpg 705.46
 01.jpg 704.993
 02.jpg 704.428

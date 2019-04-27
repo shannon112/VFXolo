@@ -1,4 +1,3 @@
-# filename  focal_length
 grail01.jpg 629.084
 grail02.jpg 629.953
 grail03.jpg 630.456
