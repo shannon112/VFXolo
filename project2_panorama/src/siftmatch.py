@@ -92,5 +92,5 @@ def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
             pt_a = (int(kpt_cut[i][1]), int(kpt_cut[i][0]))
             pt_b = (int(kpi_cut[i][1]), int(kpi_cut[i][0]))
             matched_pairs.append([pt_a,pt_b])
-    print matched_pairs
+    #print matched_pairs
     return matched_pairs

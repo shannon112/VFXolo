@@ -37,4 +37,4 @@ if __name__ == '__main__':
     image_fn = sys.argv[1]
     img = cv2.imread(image_fn)
     img = crop(img)
-    cv2.imwrite('cropped_'+image_fn+'.jpg',img)
+    cv2.imwrite('cropped_'+image_fn,img)

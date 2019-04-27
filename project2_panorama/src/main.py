@@ -12,6 +12,7 @@ import stitch
 import constant as const
 import crop
 
+# stiching from left to right
 if __name__ == '__main__':
     # read files
     image_dir = sys.argv[1]
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     shifts = [[0,0]] #every shift between two nearby images
     feature_cache = [[], []] #store last image feature
 
-    #stiching from left to right
+    # feature detecting, discriping, matching and shift finding
     for i in range(1, image_set_size):
         print 'Computing ...... {}/{}'.format(str(i),str(image_set_size-1)); sys.stdout.flush()
         img1 = str(i-1)+".jpg"
@@ -57,7 +58,6 @@ if __name__ == '__main__':
         print ' | Feature matching .... '; sys.stdout.flush()
         matched_pairs = sift_matching_BT(img1, img2 , keypints1, descriptors1, keypints2, descriptors2)
         print ' | | ' + str(len(matched_pairs)) + ' features matched.'; sys.stdout.flush()
-        print ' | | matched pairs ', matched_pairs
 
         print ' | Find best shift using RANSAC .... '; sys.stdout.flush()
         shift = stitch.RANSAC(matched_pairs)
@@ -66,22 +66,22 @@ if __name__ == '__main__':
     print 'Completed feature matching! Here are all shifts:'
     print shifts
 
+    # stitching and blending
     print 'Stitching image ... '; sys.stdout.flush()
     stitched_image = stitch.stitching_w_blending(shifts, image_set_size, height, width)
     cv2.imwrite('pano.jpg', stitched_image)
     print ' | Saved as pano.jpg'; sys.stdout.flush()
     pano_image = stitched_image.copy()
 
+    # end to end alignment
     if const.ALIGN:
-        print "not finished yet"
-        '''
         print 'End to end alignment ... '; sys.stdout.flush()
         aligned_image = alignment.e2eAlign(pano_image, shifts)
         cv2.imwrite('aligned_pano.jpg', aligned_image)
         print ' | Saved as aligned_pano.jpg'; sys.stdout.flush()
         pano_image = aligned_image.copy()
-        '''
 
+    # cropping
     if const.CROP:
         print 'Cropping image ... '; sys.stdout.flush()
         cropped_image = crop.crop(pano_image)
