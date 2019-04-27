@@ -11,6 +11,7 @@ from siftmatch import sift_matching_BT
 import stitch
 import constant as const
 import crop
+import alignment
 
 # stiching from left to right
 if __name__ == '__main__':
@@ -63,8 +64,8 @@ if __name__ == '__main__':
         shift = stitch.RANSAC(matched_pairs)
         shifts.append(shift)
         print ' | | best shift ', shift
-    print 'Completed feature matching! Here are all shifts:'
-    print shifts
+    print 'Completed feature matching! Here are all shifts:'; sys.stdout.flush()
+    print shifts;  sys.stdout.flush()
 
     # stitching and blending
     print 'Stitching image ... '; sys.stdout.flush()

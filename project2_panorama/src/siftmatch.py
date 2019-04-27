@@ -42,7 +42,7 @@ def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di):
             refined_matched_pairs.append(
             [ [int(matched_pair[0][1]),int(matched_pair[0][0])],
             [int(matched_pair[1][1]),int(matched_pair[1][0])] ])
-    print refined_matched_pairs
+    #print refined_matched_pairs
     return refined_matched_pairs
 
 

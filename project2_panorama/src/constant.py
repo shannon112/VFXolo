@@ -21,6 +21,6 @@ CROP_DENOMINATOR = 50
 
 # main.py applying end to end alignment or not
 # if your panoramas is not gradually shift up or down, it's not suggested to use this
-ALIGN = False 
+ALIGN = True
 # main.py applying cropping or not
 CROP = True
