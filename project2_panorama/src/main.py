@@ -12,6 +12,8 @@ import stitch
 import constant as const
 import crop
 import alignment
+import findshift
+
 
 # stiching from left to right
 if __name__ == '__main__':
@@ -61,7 +63,7 @@ if __name__ == '__main__':
         print ' | | ' + str(len(matched_pairs)) + ' features matched.'; sys.stdout.flush()
 
         print ' | Find best shift using RANSAC .... '; sys.stdout.flush()
-        shift = stitch.RANSAC(matched_pairs)
+        shift = findshift.RANSAC(matched_pairs)
         shifts.append(shift)
         print ' | | best shift ', shift
     print 'Completed feature matching! Here are all shifts:'; sys.stdout.flush()

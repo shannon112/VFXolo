@@ -6,14 +6,20 @@ import constant as const
 
 
 """
-End to end alignment
+feature matching using brute force method(find 2-norm distance min)
 
 Args:
-    img: panoramas image array
-    shifts: all shifts for each image in panoramas
+    templatename: last one image name
+    imagename: next one image name
+    kpt: key point of last one image (1x4)
+    dt: discription of last one image (1x128)
+    kpi: key point of next one image (1x4)
+    di: discription of next one image (1x128)
 
 Returns:
-    Aligned image array
+    final selection of matching pairs
+    its an Nx2x2 matrix
+    (N pairs, (oldImg_x,oldImg_y), (newImg_x,newImg_y))
 """
 def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di):
     cutoff = const.SIFT_MATCH_CUTOFF
@@ -58,17 +64,23 @@ def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di):
 
 
 """
-End to end alignment
+feature matching using flann library(kd-tree and knn)
 
 Args:
-    img: panoramas image array
-    shifts: all shifts for each image in panoramas
+    templatename: last one image name
+    imagename: next one image name
+    kpt: key point of last one image (1x4)
+    dt: discription of last one image (1x128)
+    kpi: key point of next one image (1x4)
+    di: discription of next one image (1x128)
 
 Returns:
-    Aligned image array
+    final selection of matching pairs
+    its an Nx2x2 matrix
+    (N pairs, (oldImg_x,oldImg_y), (newImg_x,newImg_y))
 """
-def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
-    # cutoff around 0.0003
+def sift_matching(templatename, imagename, kpt,dt,kpi,di):
+    cutoff = const.SIFT_MATCH_CUTOFF    # cutoff around 0.0003
     img = cv2.imread(imagename)
     template = cv2.imread(templatename)
     height, width =  img.shape[:2]

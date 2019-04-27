@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import sys
 import constant as const
+
+
 """
 Crop the absolute black(0) border in pano image
 

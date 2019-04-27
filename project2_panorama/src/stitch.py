@@ -1,4 +1,3 @@
-# coding: utf-8
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
@@ -7,60 +6,13 @@ from PIL import ImageTk, Image
 
 
 """
-Find best shift using RANSAC
+Stitch two image w/o blending. Naive ovelap stitching.
 
 Args:
-    matched_pairs: matched pairs of feature's positions, its an Nx2x2 matrix
-    prev_shift: previous shift, for checking shift direction.
-
-Returns:
-    Best shift [y x]. ex. [4 234]
-
-Raise:
-    ValueError: Shift direction NOT same as previous shift.
-"""
-def RANSAC(matched_pairs):
-    matched_pairs = np.asarray(matched_pairs)
-    use_random = True if len(matched_pairs) > const.RANSAC_K else False
-
-    best_shift = []
-    K = const.RANSAC_K if use_random else len(matched_pairs)
-    threshold_distance = const.RANSAC_THRES_DISTANCE
-
-    max_inliner = 0
-    for k in range(K):
-        # Random pick a pair of matched feature
-        idx = int(np.random.random_sample()*len(matched_pairs)) if use_random else k
-        sample = matched_pairs[idx] # pick one pair of matching features
-
-        # fit the warp model
-        shift = sample[1] - sample[0]
-
-        # calculate inliner points
-        shifted = matched_pairs[:,1] - shift
-        difference = matched_pairs[:,0] - shifted
-
-        inliner = 0
-        for diff in difference:
-            if np.sqrt((diff**2).sum()) < threshold_distance:
-                inliner = inliner + 1
-
-        if inliner > max_inliner:
-            max_inliner = inliner
-            best_shift = shift
-
-    return list(best_shift)
-
-
-"""
-Stitch two image with blending.
-
-Args:
-    img1: first image
-    img2: second image
-    shift: the relative position between img1 and img2
-    blending: using blending or not
-
+    shift_list: including all shifts between two img. A N*2 list
+    image_set_size: how many images need to be stitched
+    height: input image height
+    width: input image width
 Returns:
     A stitched image
 """
@@ -99,14 +51,15 @@ def stitching_wo_blending(shift_list, image_set_size, height, width):
 
 
 """
-End to end alignment
+Stitch two image w/o blending. Naive ovelap stitching.
 
 Args:
-    img: panoramas image array
-    shifts: all shifts for each image in panoramas
-
+    shift_list: including all shifts between two img. A N*2 list
+    image_set_size: how many images need to be stitched
+    height: input image height
+    width: input image width
 Returns:
-    Aligned image array
+    A stitched image
 """
 def stitching_w_blending(shift_list, image_set_size, height, width):
     # shift_list w/ initail [0,0]
