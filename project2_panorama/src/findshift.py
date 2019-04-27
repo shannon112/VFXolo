@@ -19,31 +19,27 @@ Returns:
 def RANSAC(matched_pairs):
     matched_pairs = np.asarray(matched_pairs)
     use_random = True if len(matched_pairs) > const.RANSAC_K else False
-
-    best_shift = []
     K = const.RANSAC_K if use_random else len(matched_pairs)
     threshold_distance = const.RANSAC_THRES_DISTANCE
 
+    best_shift = []
     max_inliner = 0
     for k in range(K):
         # Random pick a pair of matched feature
         idx = int(np.random.random_sample()*len(matched_pairs)) if use_random else k
         sample = matched_pairs[idx] # pick one pair of matching features
 
-        # fit the warp model
-        shift = sample[1] - sample[0]
+        # calculate shift
+        shift = sample[1] - sample[0] # next one - last one
 
         # calculate inliner points
-        shifted = matched_pairs[:,1] - shift
-        difference = matched_pairs[:,0] - shifted
-
+        predicted_pt = matched_pairs[:,1] - shift  # next one - shift = predicted last one
+        differences = matched_pairs[:,0] - predicted_pt # last one - predicted last one
         inliner = 0
-        for diff in difference:
-            if np.sqrt((diff**2).sum()) < threshold_distance:
+        for diff in differences:
+            if np.sqrt((diff**2).sum()) < threshold_distance: # 2-norm distance
                 inliner = inliner + 1
-
         if inliner > max_inliner:
-            max_inliner = inliner
-            best_shift = shift
+            max_inliner,best_shift = inliner,shift
 
     return list(best_shift)
