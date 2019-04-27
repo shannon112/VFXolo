@@ -12,15 +12,26 @@ Reference papers:
 [1] M. Brown, D. G. Lowe, Recognising Panoramas, ICCV 2003
 [2] Matthew Brown, Richard Szeliski, Simon Winder, Multi-Image Matching using Multi-Scale Oriented Patches, CVPR 2005
 ```
-Instruction to run:  
-- Usages:    
-```python2 my_hdr.py PHOTO_NAME RESOLUTION ALIGNMENT```  
-PHOTO_NAME: you can choose "robot_power" or "robotics_corner"   
-RESOLUTION: you can choose "1" or "0" for 1800*1200 or 900*600   
-ALIGNMENT: you can choose "1" or "0" for mine or built-in method
 
-- examples:   
-```python2 my_hdr.py robot_corner 0 0```  
-```python2 my_hdr.py robot_power 1 1```  
-Noted that HD would take 3~5min to finish
-
+## Instruction to run:  
+1. Create a folder of images  
+```For the images in folder, tne filenames should increase according to the view of landscape from the left side to the right side```
+e.g.
+```
+DSC09994.jpg is the left side of landscape
+DSC09995.jpg is the middle of landscape
+DSC09996.jpg is the right side of landscape
+```
+2. Create info.txt in the image folder  
+```The focal lengths in info.txt are gotten from autostitch(win7 old ver.), and should list from top to bottom with filenames increasing.```
+e.g.
+```
+DSC09994.jpg 628.57
+DSC09995.jpg 631.311
+...
+```
+3. Run the image stitching program at VFXolo/project2_panoramas e.g.
+```
+python2 src/main.py test_img/dormitoryNight
+```
+4. If you are not satisfied with the result, you can tune the parameters in ```constant.py```
