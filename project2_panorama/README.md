@@ -15,7 +15,13 @@ Reference papers:
 
 ## Instruction to run:  
 1. Create a folder of images  
-```For the images in folder, tne filenames should increase according to the view from left to right```
+```For the images in folder, tne filenames should increase according to the view of landscape from the left side to the right side```
+e.g.
+```
+DSC09994.jpg is the left side of landscape
+DSC09995.jpg is the middle of landscape
+DSC09996.jpg is the right side of landscape
+```
 2. Create info.txt in the image folder  
 ```The focal lengths in info.txt are gotten from autostitch(win7 old ver.), and should list from top to bottom with filenames increasing.```
 e.g.
