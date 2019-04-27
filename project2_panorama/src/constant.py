@@ -1,7 +1,7 @@
-'''
+"""
 All constants in this project
 Could be adjusted to get a better performance
-'''
+"""
 # siftdetector.py sift threshold
 SIFT_THRESHOLD        = 5
 

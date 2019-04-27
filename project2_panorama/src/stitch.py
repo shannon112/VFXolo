@@ -5,6 +5,7 @@ import cv2
 import constant as const
 from PIL import ImageTk, Image
 
+
 """
 Find best shift using RANSAC
 
@@ -97,6 +98,16 @@ def stitching_wo_blending(shift_list, image_set_size, height, width):
     return 0
 
 
+"""
+End to end alignment
+
+Args:
+    img: panoramas image array
+    shifts: all shifts for each image in panoramas
+
+Returns:
+    Aligned image array
+"""
 def stitching_w_blending(shift_list, image_set_size, height, width):
     # shift_list w/ initail [0,0]
     shift_set = np.array(shift_list)

@@ -4,6 +4,17 @@ import itertools
 import math
 import constant as const
 
+
+"""
+End to end alignment
+
+Args:
+    img: panoramas image array
+    shifts: all shifts for each image in panoramas
+
+Returns:
+    Aligned image array
+"""
 def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di):
     cutoff = const.SIFT_MATCH_CUTOFF
     # cutoff around 0.5
@@ -46,6 +57,16 @@ def sift_matching_BT(templatename, imagename, kpt,dt,kpi,di):
     return refined_matched_pairs
 
 
+"""
+End to end alignment
+
+Args:
+    img: panoramas image array
+    shifts: all shifts for each image in panoramas
+
+Returns:
+    Aligned image array
+"""
 def sift_matching(templatename, imagename, kpt,dt,kpi,di, cutoff):
     # cutoff around 0.0003
     img = cv2.imread(imagename)

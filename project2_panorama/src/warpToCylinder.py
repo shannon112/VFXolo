@@ -8,12 +8,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+"""
+Read images from assigned folder
+
+Args:
+    source_dir: input images folder name
+
+Returns:
+    input images np array
+"""
 def load_images(source_dir):
     img_filenames = sorted(glob.glob(os.path.join(source_dir, '*.jpg'))) # would be one of jpg or JPG
     #img_filenames = sorted(glob.glob(os.path.join(source_dir, '*.JPG'))) # would be one of jpg or JPG
     image_list = [cv2.imread(img_filename, 1) for img_filename in img_filenames]
     return np.array(image_list)
 
+
+"""
+Read known focal length from info.txt in assigned folder
+
+Args:
+    source_dir: input images folder name
+
+Returns:
+    input focal lengths np array
+"""
 def load_focal_length(source_dir):
     info_filename = glob.glob(os.path.join(source_dir, 'info.txt'))
     focal_length = []
@@ -24,6 +43,16 @@ def load_focal_length(source_dir):
     return np.array(focal_length)
 
 
+"""
+Progect image to cylindrical coordinate
+
+Args:
+    imgs: input images np array
+    focal_lengths: input focal lengths np array
+
+Returns:
+    cylindrical_projected images list
+"""
 def cylindrical_projection(imgs, focal_lengths):
     num, height, width, _ = imgs.shape
     cylinder_projs = []
@@ -40,15 +69,7 @@ def cylindrical_projection(imgs, focal_lengths):
                 if cylinder_x >= 0 and cylinder_x < width and cylinder_y >= 0 and cylinder_y < height:
                     cylinder_proj[cylinder_y][cylinder_x] = img[y+int(height/2)][x+int(width/2)]
         print ("project image {} to cylinderical coordinate...".format(i))
-        # Crop black border
-        # ref: http://stackoverflow.com/questions/13538748/crop-black-edges-with-opencv
-        #gray = cv2.cvtColor(cylinder_proj,cv2.COLOR_BGR2GRAY)
-        #_,thresh = cv2.threshold(gray,1,255,cv2.THRESH_BINARY)
-        #contours,hierarchy = cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
-        #cnt = contours[0]
-        #x,y,w,h = cv2.boundingRect(cnt)
-        cylinder_projs.append(cylinder_proj)#[y:y+h, x:x+w])
-
+        cylinder_projs.append(cylinder_proj)
     return cylinder_projs
 
 

@@ -12,7 +12,16 @@ import constant as const
 #         threshold (constrast threshold, int or float)
 # OUTPUT: keypoints (an array of four column, where the first is the x location, the second is the y location, the third is the scale, and the fourth is the orientation)
 #         descriptors (an array of 128 columns, which correspond to the SIFT descriptor)
+"""
+End to end alignment
 
+Args:
+    img: panoramas image array
+    shifts: all shifts for each image in panoramas
+
+Returns:
+    Aligned image array
+"""
 def sift_detector(imagename):
     # SIFT Detector
     #--------------
