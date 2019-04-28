@@ -15,7 +15,7 @@ RANSAC_K              = 1000 #threshold loop times
 RANSAC_THRES_DISTANCE = 3
 
 # stitch.property
-OVERLAP_REGION_RADIUS = 15
+OVERLAP_REGION_RADIUS = 25
 
 # crop.py max_black_pixel_num_thres  = final_image_width / denominator
 CROP_DENOMINATOR = 50
