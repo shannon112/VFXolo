@@ -46,3 +46,19 @@ Files structure
 │   ├── result_img     # pano, aligned_pano, cropped_pano of each collection
 │   ├── test_img     # small size image of raw_img
 ```
+
+## Artifacts
+**summerNight**: pano+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/summerNight/2/cropped_pano.jpg" width="900">
+**DEMO_parrington**: pano+align+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/parrington/cropped_aligned_parrington.jpg" width="900">
+**DEMO_grail**: pano+align+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/grail/cropped_aligned_grail.jpg" width="900">
+**midnightStreet**: pano+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/midnightStreet/cropped_midnightStreet.jpg" width="900">
+**chasedByDog**: pano+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/chasedByDog/4/cropped_pano.jpg" width="900">
+**rainyNight**: pano+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/rainyNight2/cropped_final_bt_5_0.5.jpg" width="900">
+**dormitoryNight**: pano+crop
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/dormitoryNight/cropped_dormitoryNight.jpg" width="900">
