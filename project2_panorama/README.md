@@ -39,7 +39,7 @@ python2 src/main.py test_img/dormitoryNight
 ```
 4. If you are not satisfied with the result, you can tune the parameters in ```constant.py```
 
-## Structure
+## Files Structure
 Files structure
 ```
 ├── project2_panoramas
