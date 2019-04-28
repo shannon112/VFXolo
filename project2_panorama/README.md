@@ -7,11 +7,14 @@ A python implementation of **Images Stitching(Panoramas)[1]**.
 - end to end alignment```Scattering y displacement```
 - cropping  
 
-Reference papers:    
+References:    
 ```
 [1] M. Brown, D. G. Lowe, Recognising Panoramas, ICCV 2003
 [2] Matthew Brown, Richard Szeliski, Simon Winder, Multi-Image Matching using Multi-Scale Oriented Patches, CVPR 2005
+[3] https://github.com/shannon112/PythonSIFT
+[4] https://github.com/SSARCandy/panoramas-image-stitching
 ```
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/summerNight/2/cropped_pano.jpg" width="900">
 
 ## Instruction to run:  
 1. Create a folder of images  
