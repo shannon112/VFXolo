@@ -3,7 +3,7 @@ A python implementation of **Images Stitching(Panoramas)[1]**.
 - feature detection[2] ```SIFT detector, SIFT discriptor```
 - feature matching ```Brute force(2-norm distance), flann(kd-tree, knn-search)```
 - image matching```RANSAC finding shift```
-- blending```Linear filter on edge, Linear filter on overlapRegion, Naive overlap stitching```
+- blending and stitching```Linear filter on edge/overlapRegion, Naive overlap stitching```
 - end to end alignment```Scattering y displacement```
 - cropping  
 
