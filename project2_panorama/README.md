@@ -35,3 +35,14 @@ DSC09995.jpg 631.311
 python2 src/main.py test_img/dormitoryNight
 ```
 4. If you are not satisfied with the result, you can tune the parameters in ```constant.py```
+
+## Structure
+Files structure
+```
+├── project2_panoramas
+│   ├── src       #source/executable code
+│   ├── testing_src   #some testing code while developing
+│   ├── raw_img     # 6000x4000 raw images, 5 collection
+│   ├── result_img     # pano, aligned_pano, cropped_pano of each collection
+│   ├── test_img     # small size image of raw_img
+```
