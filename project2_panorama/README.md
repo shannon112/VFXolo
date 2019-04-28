@@ -48,7 +48,8 @@ Files structure
 ```
 
 ## Artifacts
-**summerNight**: pano+crop
+**summerNight**: 
+```pano+crop```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/summerNight/2/cropped_pano.jpg" width="900">
 **DEMO_parrington**: pano+align+crop
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/parrington/cropped_aligned_parrington.jpg" width="900">
