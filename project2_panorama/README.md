@@ -57,11 +57,15 @@ Files structure
 **DEMO_grail**:  
 ```tech: pano+align+crop, input_img: 18*384x512 from test_img/grail, output_img: 4102x499```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/grail/cropped_aligned_grail.jpg" width="900">
-**midnightStreet**: pano+crop
-<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/midnightStreet/cropped_midnightStreet.jpg" width="900">
-**chasedByDog**: pano+crop
+**chasedByDog**:  
+```tech: pano+crop, input_img: 10*1000x1500 from test_img/chasedByDog, output_img: 4421x1268```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/chasedByDog/4/cropped_pano.jpg" width="900">
-**rainyNight**: pano+crop
+**rainyNight**:  
+```tech: pano+crop, input_img: 14*300x450 from test_img/rainyNight2, output_img: 1755x434```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/rainyNight2/cropped_final_bt_5_0.5.jpg" width="900">
-**dormitoryNight**: pano+crop
+**midnightStreet**:  
+```tech: pano+crop, input_img: 12*533x800 from test_img/midnightStreet, output_img: 3823x728```
+<img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/midnightStreet/cropped_midnightStreet.jpg" width="900">
+**dormitoryNight**:  
+```tech: pano+crop, input_img: 6*533x800 from test_img/dormitoryNight, output_img: 1632x734```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/dormitoryNight/cropped_dormitoryNight.jpg" width="900">
