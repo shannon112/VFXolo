@@ -48,12 +48,14 @@ Files structure
 ```
 
 ## Artifacts
-**summerNight**: 
-```pano+crop```
+**summerNight**:  
+```tech: pano+crop, input_img: 12*1000x1500 from test_img/summerNight, output_img: 4354x1435```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/summerNight/2/cropped_pano.jpg" width="900">
-**DEMO_parrington**: pano+align+crop
+**DEMO_parrington**:  
+```tech: pano+align+crop, input_img: 18*384x512 from test_img/parrington, output_img: 4565x502```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/parrington/cropped_aligned_parrington.jpg" width="900">
-**DEMO_grail**: pano+align+crop
+**DEMO_grail**:  
+```tech: pano+align+crop, input_img: 18*384x512 from test_img/grail, output_img: 4102x499```
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/grail/cropped_aligned_grail.jpg" width="900">
 **midnightStreet**: pano+crop
 <img src="https://github.com/shannon112/VFXolo/blob/test/project2_panorama/result_img/midnightStreet/cropped_midnightStreet.jpg" width="900">
