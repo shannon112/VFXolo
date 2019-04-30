@@ -35,7 +35,7 @@ DSC09995.jpg 631.311
 ```
 3. Run the image stitching program at VFXolo/project2_panoramas e.g.
 ```
-python2 src/main.py test_img/dormitoryNight
+python2 src/main.py test_img/summerNight2
 ```
 4. If you are not satisfied with the result, you can tune the parameters in ```constant.py```
 
