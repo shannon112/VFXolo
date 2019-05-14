@@ -1,0 +1,2 @@
+因為raw_img太大，而且未於實際程式中用到(實際皆是用test_img裡的照片)，因此僅放於網路上
+https://github.com/shannon112/VFXolo/tree/test/project2_panorama
