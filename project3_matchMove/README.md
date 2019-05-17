@@ -1,4 +1,4 @@
-Blender_Win64-2.6.2  
+Blender_Win64-2.6.2  -> 2.79b
 Voodoo_Win32-1.2.0  
 
 blender double press 'a' = select all  
