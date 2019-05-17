@@ -26,3 +26,8 @@ zoom in/out: ctrl + alt + left mouse to zoom in/out at mouse position
 rotate: select object and alt+left mouse to rotate around object
 padding: hold shift+alt and left mouse to pad
 ```
+resume to default
+```
+file -> load factory setting
+file -> sava as user default
+```
