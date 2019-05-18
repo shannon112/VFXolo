@@ -52,7 +52,6 @@ remember to turn on the light (use add -> lamp)
 create a plane 
 https://blender.stackexchange.com/questions/7465/create-a-flat-plane-with-beveled-edges
 editing texture
-https://blender.stackexchange.com/questions/23437/add-an-image-to-an-object
 https://www.youtube.com/watch?v=il7ajiCepus
 ```
 - using texture with transparency property(.png)
