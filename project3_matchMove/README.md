@@ -35,13 +35,13 @@ padding: hold shift+alt and left mouse to pad
 ```
 ref: https://www.youtube.com/watch?v=RNBYuYRFQe0
 
-# 3.resume to default setting
+## 3.resume to default setting
 ```
 file -> load factory setting
 file -> sava as user default
 ```
 
-# 4. 3D model
+## 4. 3D model
 - import 3D model
 ```
 model要先load進來看看顏色對不對能不能用 (press F12 or select "render camera"
