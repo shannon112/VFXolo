@@ -40,3 +40,4 @@ https://blender.stackexchange.com/questions/23437/add-an-image-to-an-object
 https://www.youtube.com/watch?v=il7ajiCepus
 using transparency png
 material -> transparency
+https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render
