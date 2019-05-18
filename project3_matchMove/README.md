@@ -31,3 +31,12 @@ resume to default
 file -> load factory setting
 file -> sava as user default
 ```
+model要先load進來看看顏色對不對能不能用 (F12
+
+create a plane 
+https://blender.stackexchange.com/questions/7465/create-a-flat-plane-with-beveled-edges
+editing texture
+https://blender.stackexchange.com/questions/23437/add-an-image-to-an-object
+https://www.youtube.com/watch?v=il7ajiCepus
+using transparency png
+material -> transparency
