@@ -7,12 +7,13 @@ iMovie (Mac_10.1.11)
 
 # Blender
 ## 1.Selecting
+```
 select all = double press 'a'
 select object = click that object on the right panel so that you could select all parts of that object
 ref: https://www.youtube.com/watch?v=guLSfezNjZw
+```
 
 ## 2.View control
-basic control of 3D view in Blender
 - setting
 ```
 File -> User preference -> Interface -> select "Zoom to Mouse Position"
