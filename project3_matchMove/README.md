@@ -80,3 +80,6 @@ fire effect: https://www.youtube.com/watch?v=mz9ftphTWTM
 
 walking
 https://www.youtube.com/watch?v=gFf5eGCjUUg
+
+how to select object
+https://blender.stackexchange.com/questions/84632/how-do-i-select-and-deselect-only-one-object
