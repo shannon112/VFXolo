@@ -63,3 +63,10 @@ https://www.youtube.com/watch?v=il7ajiCepus
 -> Don't forget to tick Use Alpha on Image Section.
 ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render
 ```
+
+output:
+Set Sky to Transparent: Scene
+https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode
+
+using layer to mask out object
+https://www.youtube.com/watch?v=xbdfpo4dOyk
