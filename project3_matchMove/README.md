@@ -73,3 +73,10 @@ https://www.youtube.com/watch?v=xbdfpo4dOyk
 
 mirror object 
 https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html
+
+
+fire effect: https://www.youtube.com/watch?v=mz9ftphTWTM
+
+
+walking
+https://www.youtube.com/watch?v=gFf5eGCjUUg
