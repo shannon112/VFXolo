@@ -83,3 +83,9 @@ https://www.youtube.com/watch?v=gFf5eGCjUUg
 
 how to select object
 https://blender.stackexchange.com/questions/84632/how-do-i-select-and-deselect-only-one-object
+
+footstep
+https://www.youtube.com/watch?v=btiw_49DeUU
+
+evil laught
+ https://www.youtube.com/watch?v=btiw_49DeUU
