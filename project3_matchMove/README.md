@@ -70,3 +70,6 @@ https://blender.stackexchange.com/questions/28772/background-image-is-not-displa
 
 using layer to mask out object
 https://www.youtube.com/watch?v=xbdfpo4dOyk
+
+mirror object 
+https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html
