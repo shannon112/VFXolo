@@ -4,6 +4,7 @@ Blender (Win64_2.6.2 -> Win64_2.79b)
 Voodoo (Win32_1.2.0)
 iMovie (Mac_10.1.11)
 ```
+Final Artifact: https://www.youtube.com/watch?v=Ez4CHCjBK3o
 
 # Blender
 ## 1.Selecting
