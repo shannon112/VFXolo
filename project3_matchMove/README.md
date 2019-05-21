@@ -11,6 +11,9 @@ Final Artifact on Youtube: https://www.youtube.com/watch?v=Ez4CHCjBK3o
 Final Artifact filename: ```Final_artifact.mp4```  
 First animation clip filename: ```suc_v2 (Converted).mov```  
 Second animation clip filename: ```suc_walk (Converted).mov```  
+  
+Handout: https://www.csie.ntu.edu.tw/~cyy/courses/vfx/19spring/assignments/proj3/index.html  
+General instruction: https://www.csie.ntu.edu.tw/~cyy/courses/vfx/19spring/assignments/proj3/MatchMove_vfx2017.pdf
 
 # Blender techniques
 ### 1.Selecting
