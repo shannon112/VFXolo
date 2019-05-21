@@ -81,10 +81,10 @@ ref: https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/tra
 To mirror a selection along a particular global axis press: Ctrl-M, followed by X, Y or Z
 ```
 walking  
+ref: https://www.youtube.com/watch?v=gFf5eGCjUUg  
 ```
 walking type 
 ```
-ref: https://www.youtube.com/watch?v=gFf5eGCjUUg  
 
 ### 5. Output as video
 Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent  
