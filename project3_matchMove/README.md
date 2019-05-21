@@ -1,3 +1,5 @@
+# NTU Mcdonalds Mystery 台大麥當勞神秘魔法陣
+# (NTU VFX 2019 spring project#3 matchMove)
 Related Software:
 ```
 Blender (Win64_2.6.2 -> Win64_2.79b)
@@ -12,13 +14,19 @@ Second animation clip filename: ```suc_walk (Converted).mov```
 
 # Blender
 ## 1.Selecting
+ref: https://www.youtube.com/watch?v=guLSfezNjZw
 ```
 select all = double press 'a'
 select object = click that object on the right panel so that you could select all parts of that object
-ref: https://www.youtube.com/watch?v=guLSfezNjZw
+```
+ref: https://blender.stackexchange.com/questions/84632/how-do-i-select-and-deselect-only-one-object
+```
+Lasso select = allows you to draw a selection polygon. holding ⎈ Ctrl while dragging the action mouse LMB around. 
+deselection = By using ⇧ Shift⎈ CtrlLMB you can draw a deselection polygon, any items within this polygon will be deselected.
 ```
 
 ## 2.View control
+ref: https://www.youtube.com/watch?v=RNBYuYRFQe0
 - setting
 ```
 File -> User preference -> Interface -> select "Zoom to Mouse Position"
@@ -38,56 +46,52 @@ zoom in/out: ctrl + alt + left mouse to zoom in/out at mouse position
 rotate: select object and alt+left mouse to rotate around object
 padding: hold shift+alt and left mouse to pad
 ```
-ref: https://www.youtube.com/watch?v=RNBYuYRFQe0
 
-## 3.resume to default setting
+## 3.Resume to default setting
 ```
 file -> load factory setting
 file -> sava as user default
 ```
 
 ## 4. 3D model
-- import 3D model
-```
-model要先load進來看看顏色對不對能不能用 (press F12 or select "render camera"
-remember to turn on the light (use add -> lamp)
-```
 - create a plane with texture
+ref: https://www.youtube.com/watch?v=il7ajiCepus
 ```
 create a plane 
 https://blender.stackexchange.com/questions/7465/create-a-flat-plane-with-beveled-edges
 editing texture
-https://www.youtube.com/watch?v=il7ajiCepus
 ```
 - using texture with transparency property(.png)
+ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render
 ```
 -> On Material Tab, go to Transparency Section, activate leaves' Material transparency
 -> set it's transparency mode to "Z Transparency"
 -> then set the Alpha value to 0.
 -> On Texture Tab, go to Influence Section, tick Alpha and set it's value to 1. 
 -> Don't forget to tick Use Alpha on Image Section.
-ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render
 ```
+- import 3D model
+```
+model要先load進來看看顏色對不對能不能用 (press F12 or select "render camera"
+remember to turn on the light (use add -> lamp)
+```
+- mirror object 
+ref: https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html
 
-output:
-Set Sky to Transparent: Scene
-https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode
+- walking
+ref: https://www.youtube.com/watch?v=gFf5eGCjUUg
 
-using layer to mask out object
-https://www.youtube.com/watch?v=xbdfpo4dOyk
+## 5. Output as video
+Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent
+ref: https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode
 
-mirror object 
-https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html
+## 6. Mask (or filter)
+Using layer to mask out object
+ref: https://www.youtube.com/watch?v=xbdfpo4dOyk
 
+# Material Reference
+Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM
 
-fire effect: https://www.youtube.com/watch?v=mz9ftphTWTM
-
-
-walking
-https://www.youtube.com/watch?v=gFf5eGCjUUg
-
-how to select object
-https://blender.stackexchange.com/questions/84632/how-do-i-select-and-deselect-only-one-object
 
 footstep
 https://www.youtube.com/watch?v=btiw_49DeUU
