@@ -91,10 +91,5 @@ ref: https://www.youtube.com/watch?v=xbdfpo4dOyk
 
 # Material Reference
 Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM
-
-
-footstep
-https://www.youtube.com/watch?v=btiw_49DeUU
-
-evil laught
- https://www.youtube.com/watch?v=btiw_49DeUU
+Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU
+Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU
