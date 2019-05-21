@@ -90,6 +90,6 @@ Using layer to mask out object
 ref: https://www.youtube.com/watch?v=xbdfpo4dOyk
 
 # Material Reference
-Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM
-Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU
-Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU
+Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM  
+Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
+Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
