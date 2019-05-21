@@ -93,6 +93,6 @@ ref: https://www.youtube.com/watch?v=xbdfpo4dOyk
 - Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM   
 - Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
 - Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
-- Musice - BGM( Y files _ Dance & Electronic | Dark ): https://www.youtube.com/audiolibrary_download?vid=f46f035db51fce50  
+- Musice - BGM(Y files): https://www.youtube.com/audiolibrary_download?vid=f46f035db51fce50  
 - 3Dmodel - Ronald McDonald: https://3dwarehouse.sketchup.com/model/ee6e706488291a8cb60886b233d6cbd8/Ronald-McDonald  
 - 3Dmodel - Fire: https://3dwarehouse.sketchup.com/model/3f272748fccff4dbccbc9e602dbf6a4a/FIRE  
