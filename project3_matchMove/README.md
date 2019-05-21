@@ -1,5 +1,5 @@
 # NTU Mcdonalds Mystery 台大麥當勞神秘魔法陣
-# (NTU VFX 2019 spring project#3 matchMove)
+### (NTU VFX 2019 spring project#3 matchMove)
 Related Software:
 ```
 Blender (Win64_2.6.2 -> Win64_2.79b)
@@ -13,7 +13,7 @@ First animation clip filename: ```suc_v2 (Converted).mov```
 Second animation clip filename: ```suc_walk (Converted).mov```  
 
 # Blender
-## 1.Selecting
+### 1.Selecting
 ref: https://www.youtube.com/watch?v=guLSfezNjZw
 ```
 select all = double press 'a'
@@ -25,7 +25,7 @@ Lasso select = allows you to draw a selection polygon. holding ⎈ Ctrl while dr
 deselection = By using ⇧ Shift⎈ CtrlLMB you can draw a deselection polygon, any items within this polygon will be deselected.
 ```
 
-## 2.View control
+### 2.View control
 ref: https://www.youtube.com/watch?v=RNBYuYRFQe0
 - setting
 ```
@@ -47,22 +47,22 @@ rotate: select object and alt+left mouse to rotate around object
 padding: hold shift+alt and left mouse to pad
 ```
 
-## 3.Resume to default setting
+### 3.Resume to default setting
 ```
 file -> load factory setting
 file -> sava as user default
 ```
 
-## 4. 3D model
-- create a plane with texture
-ref: https://www.youtube.com/watch?v=il7ajiCepus
+### 4. 3D model
+- create a plane with texture  
+ref: https://www.youtube.com/watch?v=il7ajiCepus  
 ```
 create a plane 
 https://blender.stackexchange.com/questions/7465/create-a-flat-plane-with-beveled-edges
 editing texture
 ```
-- using texture with transparency property(.png)
-ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render
+- using texture with transparency property(.png)  
+ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render  
 ```
 -> On Material Tab, go to Transparency Section, activate leaves' Material transparency
 -> set it's transparency mode to "Z Transparency"
@@ -75,21 +75,21 @@ ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent
 model要先load進來看看顏色對不對能不能用 (press F12 or select "render camera"
 remember to turn on the light (use add -> lamp)
 ```
-- mirror object 
-ref: https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html
+- mirror object  
+ref: https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html  
 
-- walking
-ref: https://www.youtube.com/watch?v=gFf5eGCjUUg
+- walking  
+ref: https://www.youtube.com/watch?v=gFf5eGCjUUg  
 
-## 5. Output as video
-Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent
-ref: https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode
+### 5. Output as video
+Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent  
+ref: https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode  
 
-## 6. Mask (or filter)
-Using layer to mask out object
-ref: https://www.youtube.com/watch?v=xbdfpo4dOyk
+### 6. Mask (or filter)
+Using layer to mask out object  
+ref: https://www.youtube.com/watch?v=xbdfpo4dOyk  
 
 # Material Reference
-Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM  
+Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM   
 Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
 Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
