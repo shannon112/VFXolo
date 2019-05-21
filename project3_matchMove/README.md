@@ -96,3 +96,5 @@ ref: https://www.youtube.com/watch?v=xbdfpo4dOyk
 - Musice - BGM(Y files): https://www.youtube.com/audiolibrary_download?vid=f46f035db51fce50  
 - 3Dmodel - Ronald McDonald: https://3dwarehouse.sketchup.com/model/ee6e706488291a8cb60886b233d6cbd8/Ronald-McDonald  
 - 3Dmodel - Fire: https://3dwarehouse.sketchup.com/model/3f272748fccff4dbccbc9e602dbf6a4a/FIRE  
+- Picture - McDonalds stand1: https://www.mynewshub.tv/wp-content/uploads/2017/01/mcd-sg.jpg  
+- Picture - McDonalds stand2: https://www.irenenorth.com/writings/wp-content/uploads/2018/06/mcdonalds-kowloon-park-IMG_0772.jpg  
