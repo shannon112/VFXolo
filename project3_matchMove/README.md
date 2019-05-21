@@ -3,8 +3,12 @@ Related Software:
 Blender (Win64_2.6.2 -> Win64_2.79b)
 Voodoo (Win32_1.2.0)
 iMovie (Mac_10.1.11)
+Photoshop (Mac_CC 2018)
 ```
-Final Artifact: https://www.youtube.com/watch?v=Ez4CHCjBK3o
+Final Artifact on Youtube: https://www.youtube.com/watch?v=Ez4CHCjBK3o  
+Final Artifact filename: ```Final_artifact.mp4```  
+First animation clip filename: ```suc_v2 (Converted).mov```  
+Second animation clip filename: ```suc_walk (Converted).mov```  
 
 # Blender
 ## 1.Selecting
