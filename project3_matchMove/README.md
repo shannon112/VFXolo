@@ -82,14 +82,16 @@ ref: https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/tra
 ref: https://www.youtube.com/watch?v=gFf5eGCjUUg  
 
 ### 5. Output as video
-Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent  
+- Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent  
 ref: https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode  
 
 ### 6. Mask (or filter)
-Using layer to mask out object  
+- Using layer to mask out object  
 ref: https://www.youtube.com/watch?v=xbdfpo4dOyk  
 
 # Material Reference
-Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM   
-Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
-Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
+- Audio - fire sound effect: https://www.youtube.com/watch?v=mz9ftphTWTM   
+- Audio - footstep sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
+- Audio - evil laught sound effect: https://www.youtube.com/watch?v=btiw_49DeUU  
+- 3Dmodel - Ronald McDonald: https://3dwarehouse.sketchup.com/model/ee6e706488291a8cb60886b233d6cbd8/Ronald-McDonald  
+- 3Dmodel - Fire: https://3dwarehouse.sketchup.com/model/3f272748fccff4dbccbc9e602dbf6a4a/FIRE
