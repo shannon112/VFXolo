@@ -14,7 +14,7 @@ Second animation clip filename: ```suc_walk (Converted).mov```
 
 # Blender
 ### 1.Selecting
-ref: https://www.youtube.com/watch?v=guLSfezNjZw
+ref: https://www.youtube.com/watch?v=guLSfezNjZw  
 ```
 select all = double press 'a'
 select object = click that object on the right panel so that you could select all parts of that object
@@ -26,21 +26,21 @@ deselection = By using ⇧ Shift⎈ CtrlLMB you can draw a deselection polygon, 
 ```
 
 ### 2.View control
-ref: https://www.youtube.com/watch?v=RNBYuYRFQe0
-- setting
+ref: https://www.youtube.com/watch?v=RNBYuYRFQe0  
+setting
 ```
 File -> User preference -> Interface -> select "Zoom to Mouse Position"
 File -> User preference -> Interface -> select "Rotate Around Selection"
 File -> User preference -> Input -> select "Emulate 3 Button Mouse"
 Save as default
 ```
-- three button control view
+three button control view
 ```
 zoom in/out: scroll mouse middle wheel to zoom in/out at mouse position
 rotate: select object and click middle wheel to rotate around object
 padding: hold shift and click middle wheel to pad
 ```
-- two button control view
+two button control view
 ```
 zoom in/out: ctrl + alt + left mouse to zoom in/out at mouse position
 rotate: select object and alt+left mouse to rotate around object
@@ -54,14 +54,14 @@ file -> sava as user default
 ```
 
 ### 4. 3D model
-- create a plane with texture  
+create a plane with texture  
 ref: https://www.youtube.com/watch?v=il7ajiCepus  
 ```
 create a plane 
 https://blender.stackexchange.com/questions/7465/create-a-flat-plane-with-beveled-edges
 editing texture
 ```
-- using texture with transparency property(.png)  
+using texture with transparency property(.png)  
 ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent-textures-in-blender-render  
 ```
 -> On Material Tab, go to Transparency Section, activate leaves' Material transparency
@@ -70,23 +70,22 @@ ref: https://blender.stackexchange.com/questions/78917/how-to-render-transparent
 -> On Texture Tab, go to Influence Section, tick Alpha and set it's value to 1. 
 -> Don't forget to tick Use Alpha on Image Section.
 ```
-- import 3D model
+import 3D model
 ```
 model要先load進來看看顏色對不對能不能用 (press F12 or select "render camera"
 remember to turn on the light (use add -> lamp)
 ```
-- mirror object  
+mirror object  
 ref: https://docs.blender.org/manual/en/latest/editors/3dview/object/editing/transform/mirror.html  
-
-- walking  
+walking  
 ref: https://www.youtube.com/watch?v=gFf5eGCjUUg  
 
 ### 5. Output as video
-- Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent  
+Video Sequence Editor -> scene track -> property -> Scene -> Alpha M -> Set Sky to Transparent  
 ref: https://blender.stackexchange.com/questions/28772/background-image-is-not-displaying-in-rendered-mode  
 
 ### 6. Mask (or filter)
-- Using layer to mask out object  
+Using layer to mask out object  
 ref: https://www.youtube.com/watch?v=xbdfpo4dOyk  
 
 # Material Reference
