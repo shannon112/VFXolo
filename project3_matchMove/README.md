@@ -12,7 +12,7 @@ Final Artifact filename: ```Final_artifact.mp4```
 First animation clip filename: ```suc_v2 (Converted).mov```  
 Second animation clip filename: ```suc_walk (Converted).mov```  
 
-# Blender
+# Blender techniques
 ### 1.Selecting
 ref: https://www.youtube.com/watch?v=guLSfezNjZw  
 ```
