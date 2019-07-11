@@ -17,7 +17,9 @@ you can get more details in each ```README.md``` or ```report.pdf``` inside fold
   * stitching n blending (Linear filter on fixed width edge or entire overlapRegion, Naive overlap stitching)
   * end to end alignment (Scattering y displacement)
   * cropping
-
 * project3_matchMove
   * structure from motion (sfm) concept
   * Blender, Voodoo, iMovie, Photoshop
+* VFX_Final
+  * Visual odometry with deep learning (DeepVO)
+  * https://github.com/guodongxiaren/README
