@@ -1,5 +1,7 @@
 # Composite HDR images from multiple exposures
 A python implementation of **images alignment[1]**, **HDR[2]**, **tone mapping[3][4][5][6]**(Using cv2).   
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/src/robot_power_photomatix.jpg" width=400/>
+<img src="https://github.com/shannon112/VFXolo/blob/test/project1_hdrImage/src/robotics_corner2_photomatix2.jpg" width=400/>
 Reference papers:    
 ```
 [1] Greg Ward, Fast Robust Image Registration for Compositing High Dynamic Range Photographs from Hand-Held Exposures, jgt 2003.  
@@ -95,3 +97,5 @@ Pick the min difference as the offset
 At the next resolution level, we multiply this offset by 2 and repeat compute the minimum difference offset within a ±1 pixel
 Continues to the highest (original) resolution MTB, where we get our final offset result
 ```
+
+### (see more detail in ```VFX hw1 report.pdf``` )
