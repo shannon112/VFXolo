@@ -1,8 +1,8 @@
 # VFXolo
-NTU CSIE 7694 Digital Visual Effects (by Prof. CYY) homeworks,   
-you can get more details in each README.md inside folders.   
-<img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12212255/Xoloitzcuintli-on-White-06.jpg" width="350">  
+My NTU CSIE 7694 Digital Visual Effects (by Prof. CYY) homeworks,   
+you can get more details in each ```README.md``` or ```report.pdf``` inside folders.   
 > Mexican Hairless Dog, Xoloitzcuintli (/zoʊloʊiːtsˈkwiːntli/), or Xolo for short.  
+<img src="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12212255/Xoloitzcuintli-on-White-06.jpg" width="350">  
 
 ---
 
