@@ -7,7 +7,10 @@ Voodoo (Win32_1.2.0)
 iMovie (Mac_10.1.11)
 Photoshop (Mac_CC 2018)
 ```
-Final Artifact on Youtube: https://www.youtube.com/watch?v=Ez4CHCjBK3o  
+Final Artifact on Youtube: 
+[![youtube_video](https://i.imgur.com/in9swJX.png)](https://www.youtube.com/watch?v=Ez4CHCjBK3o)
+![](https://i.imgur.com/in9swJX.png | width=840)
+
 Final Artifact filename: ```Final_artifact.mp4```  
 First animation clip filename: ```suc_v2 (Converted).mov```  
 Second animation clip filename: ```suc_walk (Converted).mov```  
