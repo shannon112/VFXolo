@@ -22,4 +22,4 @@ you can get more details in each ```README.md``` or ```report.pdf``` inside fold
   * Blender, Voodoo, iMovie, Photoshop
 * VFX_Final
   * Visual odometry with deep learning (DeepVO)
-  * https://github.com/guodongxiaren/README
+  * https://github.com/shannon112/VFX_Final
