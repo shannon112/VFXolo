@@ -20,4 +20,5 @@ you can get more details in each README.md inside folders.
   * cropping
 
 * project3_matchMove
-  * for pytorch and cuda testing
+  * structure from motion (sfm) concept
+  * Blender, Voodoo, iMovie, Photoshop
