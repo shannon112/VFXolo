@@ -5,9 +5,13 @@ you can get more details in each README.md inside folders.
 
 > Mexican Hairless Dog, Xoloitzcuintli (/zoʊloʊiːtsˈkwiːntli/), or Xolo for short.  
 
-* 01.PCA_kNN - face recognition
-  * cv2&matplotlib(gray), MSE, PCA, reconstruction, k-NN  
-* 02.BoW - image classification
+---
+
+* project1_hdrImage
+  * Alignment (MTB + Image Pyramid + Offset Search)
+  * HDR (recover CRF + generate radiance map)
+  * Tone mapping (opencv or Photomatix)
+* project2_panorama
   * cv2&matplotlib(rgb), Patches, k-means, PCA, scatterPlot3D, Soft-max(max pooling), k-NN
-* 03.MNISTdemo - handwritten digit recognition
+* project3_matchMove
   * for pytorch and cuda testing
