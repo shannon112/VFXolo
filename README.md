@@ -12,6 +12,12 @@ you can get more details in each README.md inside folders.
   * HDR (recover CRF + generate radiance map)
   * Tone mapping (opencv or Photomatix)
 * project2_panorama
-  * cv2&matplotlib(rgb), Patches, k-means, PCA, scatterPlot3D, Soft-max(max pooling), k-NN
+  * feature detection (SIFT detector, SIFT discriptor)
+  * feature matching (Brute force(2-norm distance), flann(kd-tree, knn-search))
+  * image matching (RANSAC finding shift)
+  * stitching n blending (Linear filter on fixed width edge or entire overlapRegion, Naive overlap stitching)
+  * end to end alignment (Scattering y displacement)
+  * cropping
+
 * project3_matchMove
   * for pytorch and cuda testing
